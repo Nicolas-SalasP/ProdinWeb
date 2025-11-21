@@ -1,4 +1,4 @@
-<?
+<?php
 function crea_linea_produccion($link,$ldp,$id_ldp,$onchange)// funcion crea Procedencia
 {
 if(!$onchange){

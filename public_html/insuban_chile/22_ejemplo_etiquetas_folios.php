@@ -262,7 +262,7 @@ if (document.form1.id_procedencia.value == '0') {
 }
 
 if (document.form1.f_elaboracion.value == "") {     
-    alert('Ingresar Fecha Elaboración');
+    alert('Ingresar Fecha Elaboraciï¿½n');
     document.form1.f_elaboracion.onfocus;
     return false;
 }
@@ -397,7 +397,7 @@ setTimeout("Blink('"+layerName+"')",blink_speed);
 <!-- 
 function Confirmar(form1) { 
 
-var borrar = confirm("Estás seguro/a de que desea eliminar el registro?"); 
+var borrar = confirm("Estï¿½s seguro/a de que desea eliminar el registro?"); 
 
 return borrar; //true o false 
 
@@ -495,7 +495,7 @@ return borrar; //true o false
                     </tr>
                   </table>
 				<?  }?>
-                  <span class="style11"><STRONG><? echo "SOLICITUD N° $id_c_es_so";?></STRONG></span></td>
+                  <span class="style11"><STRONG><? echo "SOLICITUD Nï¿½ $id_c_es_so";?></STRONG></span></td>
                 <td><div align="center"><span class="numero">A&Ntilde;O <? echo substr($row[ano],0,4); ?> FOLIO <?echo $row[id_etiquetados_folios]?>
                       <? if($row[id_estado_folio] == 5){?>
                       <span class="style2">Folio Anulado </span>
@@ -887,7 +887,7 @@ Fecha de Recepci&oacute;n.
                 
                 <a href="?modulo=modificar_pallet.php&amp;pallet=<?echo $row[pallet]?>"><? echo $row[pallet]; ?></a>
                 <? }else{ ?>
-                <? echo "Asignado al Pallet Nº $row[pallet]"; ?>
+                <? echo "Asignado al Pallet Nï¿½ $row[pallet]"; ?>
                 <? }?>
                 
                 <? }else{?>
@@ -938,7 +938,7 @@ Fecha de Recepci&oacute;n.
 						  <?
 						  }
 						  if($row[id_estado_folio] == 9){
-						  echo "Revisión";
+						  echo "Revisiï¿½n";
 						   ?>
 						  <input name="id_estado_folio" type="hidden" value="<?echo $row[id_estado_folio]?>" />
 						  <?
@@ -1333,7 +1333,7 @@ Fecha de Recepci&oacute;n.
                        <? if($codigonuevo != 201 and $codigonuevo != 202 and $codigonuevo != 203 and $codigonuevo != 204 and $codigonuevo != 197 and $codigonuevo != 205){?>
                       Fecha de Elab. 
                       <? }else{?>
-                      Fecha de Recepción. 
+                      Fecha de Recepciï¿½n. 
                       <? }
 						
 					  ?>

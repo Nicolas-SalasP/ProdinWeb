@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
   //echo "uno".$_SESSION['id_insuban']."<br>";

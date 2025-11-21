@@ -51,10 +51,11 @@
               <tr>
                 <td>&nbsp;</td>
                 <td colspan="3"><div align="center"><span class="style2">
-                    <? 
-			  echo $error; 
-			  $error1=$_GET['error']; echo $error1;
-			  ?>
+            <?php 
+                if(isset($_GET['error'])) {
+                    echo "<span style='color:red;'>" . htmlspecialchars($_GET['error']) . "</span>";
+                }
+            ?>
                 </span></div></td>
               </tr>
               <tr>

@@ -1,4 +1,4 @@
-<?
+<?php
 function crea_centros_producciondb2($link,$id_centros_produccion,$onchange)//funcion crea producto
 {
 if(!$onchange){
