@@ -1,0 +1,30 @@
+[12-Nov-2020 15:39:55] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:39:55] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:27] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:27] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:28] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:28] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:28] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:28] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:29] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:29] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:30] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:30] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:30] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:30] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:30] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:30] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7
+[12-Nov-2020 15:41:30] PHP Notice:  Undefined index:  login_user in /home/prodinwe/public_html/insumos/controlador/session.php on line 5
+[12-Nov-2020 15:41:30] PHP Fatal error:  Call to undefined function mysqli_query() in /home/prodinwe/public_html/insumos/controlador/session.php on line 7

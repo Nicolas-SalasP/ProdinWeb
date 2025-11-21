@@ -1,0 +1,708 @@
+<?php 
+require "lib/conexion.php";
+$link = mysql_connect("$localhost","$user","$pass");
+mysql_select_db("$db");
+require "lib/funciones.php";
+ini_set('memory_limit', '-1');
+
+
+if($modificar){
+
+$sql="delete from folios_mat where  id_etiquetados_folios = $id_etiquetados_folios";
+$res=mysql_query($sql);
+//echo "sqls $sql<br>";
+foreach ($_POST as $key => $value)
+{ 
+
+ $dat=split("-",$key); 
+
+   if ($dat[0] == 'id_mat')
+   {
+	$id=$dat[1];
+   	$id_mat=$_POST["id_mat-$id"];
+	
+    $sql2="SELECT * FROM mat_prima_nacional WHERE id_mat_prima_nacional = $id_mat";
+	$result2=mysql_query($sql2);
+	//echo "sql2 $sql2<br>";
+	if ($row2=mysql_fetch_array($result2)) { 
+         $contenido2=$row2[contenido];
+		 $total_contenido2+=$contenido2;
+		 
+	}
+	
+   }
+   
+   }
+ 
+//echo "mat_prima_nacional $total_contenido<br>";
+foreach ($_POST as $keyg3 => $value3)
+{ 
+
+ $dat3e=split("-",$keyg3); 
+
+   if ($dat3e[0] == 'id_mat3')
+   {
+	$id3e=$dat3e[1];
+	$id_mat33=$_POST["id_mat3-$id3e"]; 
+	//echo "id_mat33 $id_mat33";
+	$sql37="SELECT * FROM mat_prima_importada WHERE id_mat_prima_importada = $id_mat33";
+	$result37=mysql_query($sql37);
+	//echo "sql3 $sql37<br>";
+	
+	if ($row37=mysql_fetch_array($result37)) { 
+         $contenido3=$row37[contenido];
+		 $total_contenido3+=$contenido3;
+	}
+   }
+	
+   }
+ 
+//echo "mat_prima_importada $total_contenido3<br>";
+
+foreach ($_POST as $keyy => $value)
+{ 
+ $dat5=split("-",$keyy); 
+   if ($dat5[0] == 'id_mat')
+   {
+	$id5=$dat5[1];
+   	$id_mat5=$_POST["id_mat-$id5"]; 
+	$sql36="SELECT * FROM mat_prima_nacional WHERE id_mat_prima_nacional = $id_mat5";
+	$result33=mysql_query($sql36);
+	
+	while ($row33=mysql_fetch_array($result33)) { 
+          $contenido2=$row33[contenido];
+		  $valor_cmp2=$row33[valor_cmp];
+		 
+		  $aporte_por_material2 = $contenido2 / $total_contenido2;
+		  $ponderado2 =$valor_cmp2 *  $aporte_por_material2;
+		
+		//echo "$id_etiquetas / $id_mat / $contenido / $valor_cmp / $aporte_por_material / $ponderado <br>";
+		 $sql_mod="insert folios_mat (id_etiquetados_folios,id_mat,contenido,valor_cmp,aporte_por_material,ponderado) values ($id_etiquetados_folios,$id_mat5,$contenido2,$valor_cmp2,$aporte_por_material2,$ponderado2)";
+	$result_cruce=mysql_query($sql_mod,$link);
+	//echo "SQL AGREGAR $sql_mod<br>";
+	 $total_ponderado2+=$ponderado2;
+	 
+	}//while ($row3=mysql_fetch_array($result3)) { 
+		 
+		 
+	}//if ($dat[0] == 'id_mat')
+	
+
+
+}//foreach ($_POST as $key => $value)
+//echo "total_ponderado_nacional $total_ponderado<br>";
+
+foreach ($_POST as $keyg3 => $value3)
+{ 
+ $dat3f=split("-",$keyg3); 
+   if ($dat3f[0] == 'id_mat3')
+   {
+	$id3f=$dat3f[1];
+	//echo "id3f $id3f<br>";
+	$id_mat3f=$_POST["id_mat3-$id3f"]; 
+	//echo "id_mat3f $id_mat3f<br>";
+	$sql3f="SELECT * FROM mat_prima_importada WHERE id_mat_prima_importada = $id_mat3f";
+	$result3f5=mysql_query($sql3f);
+	//echo "sql3f $sql3f<br>";
+	while ($row3f5=mysql_fetch_array($result3f5)) { 
+          $contenido3=$row3f5[contenido];
+		  $valor_cmpi=$row3f5[valor_cmpi];
+		  $aporte_por_material3 = $contenido3 / $total_contenido3;
+		  $ponderado3 =$valor_cmpi *  $aporte_por_material3;
+		
+		//echo "$id_etiquetas / $id_mat / $contenido / $valor_cmp / $aporte_por_material / $ponderado <br>";
+		 $sql_mod="insert folios_mat (id_etiquetados_folios,id_mat,contenido,valor_cmp,aporte_por_material,ponderado) values ($id_etiquetados_folios,$id_mat3f,$contenido3,$valor_cmpi,$aporte_por_material3,$ponderado3)";
+	$result_cruce=mysql_query($sql_mod,$link);
+	//echo "SQL AGREGAR $sql_mod";
+	 $total_ponderado3+=$ponderado3;
+	 
+	}//while ($row3=mysql_fetch_array($result3)) { 
+  }//if ($dat[0] == 'id_mat')
+	
+}//foreach ($_POST as $key => $value)
+//echo "total_ponderado_importado $total_ponderado3<br>";
+
+foreach ($_POST as $key66 => $value66)
+{ 
+
+ $dat66=split("-",$key66); 
+   if ($dat66[0] == 'id_pt')
+   {
+	$id66=$dat66[1];
+   	$id_ptw=$_POST["id_pt-$id66"];   
+	$largo=strlen($id_ptw);
+	if($largo == 9){
+	$id_ptw=substr($id_ptw,1,9);
+	}
+	$sql4="SELECT * FROM etiquetados_folios WHERE id_etiquetados_folios = $id_ptw";
+	$result4=mysql_query($sql4);
+
+	while ($row66=mysql_fetch_array($result4)) { 
+          $contenido66=$row66[contenido_unidades];
+    	  $id_m3=$row66[folio_m3];  
+    	             
+		  $sql_mod66="insert folios_mat (id_etiquetados_folios,id_mat,id_procedencia,contenido) values ($id_etiquetados_folios,$id_ptw,'N',$contenido66)";
+    	  $result_cruce=mysql_query($sql_mod66,$link);
+		  //echo "sql_mod66 $sql_mod66<br>";
+		  
+		  //$sqlup3="UPDATE etiquetados_folios  set folioptnew_reproceso = '$id_ptwok' where id_etiquetados_folios  = $id_ptw";
+	      //$result3=mysql_query($sqlup3); 
+		  //echo "sqlup3 $sqlup3";
+		  
+		  //echo "sql_mod $sql_mod66<br>";
+  	     
+	}//while ($row3=mysql_fetch_array($result3)) { 
+  }//if ($dat[0] == 'id_mat')
+}//foreach ($_POST as $key => $value)
+
+$suma_mpni=$total_contenido3 + $total_contenido2;
+
+//echo "Total suman $suma_mpni<br>";
+
+$res1=$total_contenido2 / $suma_mpni;
+$res2=$total_contenido3 / $suma_mpni;
+
+$ver1=$total_ponderado2 * $res1;
+$ver2=$total_ponderado3 * $res2;
+
+$total_ponderado_mpni=$ver1 + $ver2;
+
+//echo "total ponderado $total_ponderado_mpni<br>";
+
+   if($id_tipo_calculo == 3) //multiplocar
+   {
+	 $resul_valor_unitario = $total_ponderado_mpni * $valor_indice;
+	   
+   }
+    if($id_tipo_calculo == 4) //dividir
+   {
+	  $resul_valor_unitario = $total_ponderado_mpni / $valor_indice;
+   }
+   
+    $fech_generada_inicio =date("Y-m-d H:i:s");
+
+ $sqlup3="UPDATE etiquetados_folios  set total_ponderado   = '$resul_valor_unitario', fech_generada_inicio = '$fech_generada_inicio' where id_etiquetados_folios  = $id_etiquetados_folios";
+	  $result3=mysql_query($sqlup3);   
+//echo "$sqlup3<br>";
+
+//echo"<meta http-equiv=\"refresh\" content=\"0;URL=ver_trazabilidad.php?id_etiquetados_folios=$id_etiquetados_folios&amp;f_elaboracion=$f_elaboracion&
+//f_termino=$f_termino&id_producto=$id_producto\">";
+ //exit;
+ ?>
+<script languaje="javascript">
+/*top.opener.document.location = top.opener.document.location;*/
+window.opener.document.location.replace('<? echo $url;?>/sistema.php?modulo=ejemplo_etiquetas_folios.php&id_etf2=<? echo  $id_etiquetados_folios;?>');
+</script>
+<script language="javascript">
+window.close();
+</script>
+<?
+}
+
+
+
+
+
+
+if($id_etiquetados_folios){
+
+$sql_buscar="SELECT * from folios_mat AS fm, mat_prima_nacional AS mpn, origenes as orig, producto AS p where fm.id_etiquetados_folios=$id_etiquetados_folios and fm.id_mat = mpn.id_mat_prima_nacional and mpn.id_origen=orig.id_origen and mpn.id_producto = p.id_producto and fm.id_procedencia != 'N' ";
+$result_buscar=mysql_query($sql_buscar);
+$cuantos_buscar=mysql_num_rows($result_buscar);
+//echo "cuantos_buscar $cuantos_buscar<br>";
+
+$sql_buscar2="SELECT * from folios_mat AS fm, mat_prima_importada AS mpn, origenes as orig, producto AS p where fm.id_etiquetados_folios=$id_etiquetados_folios and fm.id_mat = mpn.id_mat_prima_importada and mpn.id_origen=orig.id_origen and mpn.id_producto = p.id_producto";
+$result_buscar2=mysql_query($sql_buscar2);
+$cuantos_buscar2=mysql_num_rows($result_buscar2);
+//echo "cuantos_buscar2 $cuantos_buscar2<br>";
+//$id_etiquetados_foliosreprocesado="3".$id_etiquetados_folios;
+
+	$sqlpt="SELECT  ef.id_etiquetados_folios AS id_etiquetados_folios, ef.freprocesado AS freprocesado, p.producto AS producto, c.calibre AS calibre, um.unidad_medida AS unidad_medida, mpro.medidas_productos AS medidas_productos, carpro.caract_producto AS caract_producto, carenv.caract_envases AS caract_envases, ef.contenido_unidades AS contenido_unidades, o.nombreop AS nombreop, o.apellido AS apellido, e.estado_folio AS estado_folio, ef.id_cruce_tablas AS id_cruce_tablas, ef.folio_m3 AS cod_m3 FROM folios_mat AS fm, etiquetados_folios AS ef, producto AS p, calibre AS c, medidas_productos AS mpro, unidad_medida AS um, caract_producto AS carpro, caract_envases AS carenv, operarios AS o, estado_folio AS e  where fm.id_etiquetados_folios = $id_etiquetados_folios and fm.id_mat = ef.id_etiquetados_folios and ef.id_producto = p.id_producto and ef.id_calibre = c.id_calibre and ef.id_medidas_productos = mpro.id_medidas_productos and ef.id_unidad_medida = um.id_unidad_medida and ef.id_caract_producto = carpro.id_caract_producto and ef.id_caract_envases = carenv.id_caract_envases and ef.id_operarios=o.id_operarios and ef.id_estado_folio = e.id_estado_folio and ef.id_estado_folio = 6 and fm.id_procedencia = 'N'";
+$resultpt=mysql_query($sqlpt);
+$cuantospt=mysql_num_rows($resultpt);
+
+//echo "sqlpt $sqlpt<br>";
+
+?>
+
+<style type="text/css">
+<!--
+.cajas {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.titulo {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; }
+.numero {	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.style2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14; font-weight: bold; }
+-->
+</style>
+
+
+
+<input type="hidden" name="id_producto" value="<? echo $id_producto?>" />
+<input type="hidden" name="f_termino" value="<? echo $f_termino?>" />
+<input type="hidden" name="id_tipo_calculo" value="<? echo $id_tipo_calculo?>" />
+<input type="hidden" name="valor_indice" value="<? echo $valor_indice?>" />
+
+<? //echo "valor_indice $valor_indice - id_tipo_calculo $id_tipo_calculo";?>
+<script language="JavaScript"> 
+
+ function formcheck3(chkbox,numero)
+ {var e;
+ for(var i=0;i<document.forms['form1'].elements.length;i++)
+ { e=document.forms['form1'].elements[i];
+ if(e.type=="checkbox")
+ {
+ if(numero==e.value.substring(0,1))
+ {
+ e.checked=chkbox.checked; 
+ }
+ }
+ }
+
+ }
+ 
+  function formcheck2(chckbox)
+ {
+ for(var i=0;i<document.form1.elements.length;i++)
+ {
+ var e=document.form1.elements[i];
+ if(e.type=="checkbox")
+ {
+ e.checked= chckbox.checked;
+ }
+
+ }
+
+
+ }
+
+
+</script>
+<script>
+window.onload=function(){
+var pos=window.name || 0;
+window.scrollTo(0,pos);
+}
+window.onunload=function(){
+window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
+}
+</script>
+<script language="JavaScript" type="text/javascript" src="lib/cal.js">
+</script>
+
+<form id="form1" name="form1" method="post" action="">
+  <input type="hidden" name="id_producto" value="<? echo $id_producto?>">
+  <input type="hidden" name="f_elaboracion" value="<? echo $f_elaboracion?>">
+  <? if($cuantos_buscar or $cuantos_buscar2){?>
+<? echo "FOLIO N&ordm; : <b>" .$m3_cod. "</b>" ?>  
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+<!--            <td width="8%" bgcolor="#CCCCCC" class="titulo">&nbsp;Codigo&nbsp;</td>-->
+            <td width="9%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;F. ingreso&nbsp;</td>
+            <td width="23%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Producto&nbsp;</td>
+            <td width="10%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Origen&nbsp;</td>
+            <td width="10%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Guia/Factura&nbsp;</td>
+            <td width="10%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Factura Imp.</td> 
+            <td width="7%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Bidon&nbsp;</td>
+            <td width="8%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Contenido&nbsp;</td>
+            <td width="7%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; RCP&nbsp;</td>
+            <td width="4%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Certificado</td>
+            <td width="4%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;F. Faena&nbsp;</td>            
+            <td width="4%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;F. Produccion</td> 
+          </tr>
+		  <? 
+		  while ($r=mysql_fetch_array($result_buscar)) { 
+		//$ano=substr($r[ano], 2, 3);
+		 //$base="N".$ano.$r[id_mat_prima_nacional];
+
+		  		$cn = $r[comprobante_num];
+		  		 $fm = $r[factura_mp];
+
+
+		  ?>
+          <tr>
+<!--            <td class="cajas">&nbsp;<?echo "N$r[id_mat_prima_nacional]";?></td>-->
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r[fecha_ingreso]);?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[producto]?> [<? echo $r[id_producto]?>]</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[origen]?> [<? echo $r[id_origen]?>]</td>
+            <? if ($cn == 0) {
+            	$comp = $fm;
+            	}else{
+            	$comp = $cn;          		
+            }?>
+            <td nowrap="nowrap" class="cajas">&nbsp;0<?echo $comp;?></td> 
+            <td nowrap="nowrap" class="cajas">&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[bidon_num]?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[contenido]?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[rcp]?></td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[cert_sanitario]?></td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r[fecha_faena]);?></td>
+            <td align="right" nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r[fecha_salida]);?></td> 
+          </tr>
+          <? } //while ($row=mysql_fetch_array($result))?>
+          
+          <?
+		  if($cuantos_buscar2){//pregunta si viene materia prima importada
+		  while ($r2=mysql_fetch_array($result_buscar2)) { 
+		  //$ano=substr($r[ano], 2, 3);
+		  //$base="N".$ano.$r[id_mat_prima_nacional];
+		  $id_mat_prima_importa3=$r2[id_mat_prima_importada];
+		  ?>
+          <tr>
+<!--            <td class="cajas">&nbsp;
+		   <?
+           $largo=strlen($id_mat_prima_importa3);
+		   if($largo == 8){ 
+		   $id_mat_prima_importa3=substr($id_mat_prima_importa3,1,7);
+		   }
+  		   if($largo == 9){
+		   $id_mat_prima_importa3=substr($id_mat_prima_importa3,1,8);
+		   }
+		   echo "I$id_mat_prima_importa3";
+	  	 ?>
+         </td>-->
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r2[fecha_ingreso]);?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[producto]?> [<? echo $r2[id_producto]?>]</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[origen]?></td>
+            <td nowrap="nowrap" class="cajas">&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[comprobante_num]?></td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[bidon_num]?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[contenido]?>&nbsp;</td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[valor_cmpi]?></td>
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r2[cert_sanitario]?></td>            
+            <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r2[fecha_elaboracion]);?></td>
+            <td align="right" nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($r2[fecha_salida]);?></td> 
+          </tr>
+		  <? } //while ($row=mysql_fetch_array($result))
+			}
+		  ?>
+          
+          
+  </table>
+  <? } ?>
+  <? if($cuantospt){?>
+  <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <tr class="titulo">
+          <td width="67" height="19" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;FOLIO M3</strong></td> 
+          <td width="30" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;COD</strong></td>
+          <td width="70" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;PRODUCTO</strong></td>
+          <td width="65" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;CALIBRE</strong></td>
+          <td width="75" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;&nbsp;U/MEDIDA</strong></td>
+          <td width="59" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;MEDIDAS</strong></td>
+          <td width="44" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;C/PRO</strong></td>
+          <td width="52" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;C/ENV</strong></td>
+          <td width="83" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;CONTENIDO</strong></td>
+          <td width="83" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;OPERARDOR</strong></td>
+          <td width="52" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;ESTADO</strong><strong>&nbsp;</strong></td>
+          <td width="53" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;F/REPROCESO</strong></td>
+          </tr>
+        <?
+	if($cuantospt){
+    $i = 0;
+    while ($rowpt=mysql_fetch_array($resultpt))
+    {
+	$i++;
+	$id_folio_m3=$rowpt[cod_m3];	
+	$id_etiquetados_foliospt=$rowpt[id_etiquetados_folios];
+	$freprocesado=$rowpt[freprocesado];
+	$estado_folio=$rowpt[estado_folio];
+	$id_cruce_tablas=$rowpt[id_cruce_tablas];
+	$producto=$rowpt[producto];
+	$calibre=$rowpt[calibre];
+	$unidad_medida=$rowpt[unidad_medida];
+	$medidas_productos=$rowpt[medidas_productos];
+	$caract_producto=$rowpt[caract_producto];
+	$caract_envases=$rowpt[caract_envases];
+	$contenido_unidadespt=$rowpt[contenido_unidades];
+	$nom = strtoupper($rowpt[nombreop]);
+	$apell = strtoupper($rowpt[apellido]);
+  ?>
+        <tr class="cajas">
+<!--         <td height="8" nowrap="nowrap">PT&nbsp;<? echo $id_etiquetados_foliospt?></td> -->
+          <td height="8" nowrap="nowrap">&nbsp;<? echo $id_folio_m3?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $id_cruce_tablas?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $producto ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $calibre ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $unidad_medida ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $medidas_productos ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $caract_producto ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $caract_envases ?></td>
+          <td width="83" nowrap="nowrap" >&nbsp;<? echo $contenido_unidadespt ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo "$nom $apell"?></td>
+          <td nowrap="nowrap" >&nbsp; <? $est = strtoupper($estado_folio); echo $est ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $freprocesado?></td>
+          </tr>
+        <?
+		 
+		}//   while ($rowpt=mysql_fetch_array($resultpt))
+	} //if($cuantospt){
+		
+
+	?>
+        </table>
+  <? }?>
+  <? } //  while ($r=mysql_fetch_array($result_buscar)) 
+		 
+		?>
+  <table width="497" border="0" align="center">
+    <tr>
+      <td width="244"><strong>
+	 	  <a href="javascript: document.form1.submit();">
+      
+        <? if($buscar_faja or $hasta){?>
+       
+       
+        <input type="submit" name="modificar" id="modificar" value="modificar" />
+        <? }?>
+      </a>
+	 
+	  </strong> </td>
+      <td width="245"><a href="ver_trazabilidad.php?id_etiquetados_folios=<? echo $id_etiquetados_folios?>&amp;trazabilidad=1&f_elaboracion=<? echo $f_elaboracion?>&f_termino=<? echo $f_termino?>&id_producto=<? echo $id_producto?>&valor_indice=<? echo $valor_indice?>&id_tipo_calculo=<? echo $id_tipo_calculo?>" class="titulo">+ Trazabilidad</a></td>
+    </tr>
+  </table>
+  <br>
+		<? if($trazabilidad){?>
+		
+		<table width="100%" border="0" align="center">
+          <tr>
+            </tr>
+          <tr>
+            <td colspan="3"><table width="437" border="0" align="center">
+              <tr>
+                <td width="158"><span class="titulo">Desde </span></td>
+                <td width="167"><span class="titulo">Hasta</span></td>
+                <td width="98"><input name="buscar_faja" type="submit" class="cajas" value="Buscar" /></td>
+              </tr>
+              <tr>
+                <td><input name="desde" type="text" class="cajas" value="<?echo $desde?>" size="10" maxlength="10" />
+                <a href="javascript:show_Calendario('form1.desde');" class="cajas" >Ver</a></td>
+                <td><input name="hasta" type="text" class="cajas" value="<? echo $hasta;?>" size="10" maxlength="10" />
+              <a href="javascript:show_Calendario('form1.hasta');" class="cajas" >Ver</a></td>
+                <td><? $producto= crea_producto_onChange($link,$id_producto);
+		 echo $producto;?></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+			<? if($hasta and $id_producto){
+		    $desde=format_fecha_sin_hora($desde);
+			$hasta=format_fecha_sin_hora($hasta);
+			$sql_buscar="SELECT * from mat_prima_nacional AS mpn, origenes AS orig, producto AS p WHERE mpn.fecha_salida BETWEEN '$desde' AND '$hasta' and mpn.id_estado_material = 2 and mpn.id_origen = orig.id_origen and p.id_producto = $id_producto and mpn.id_producto = p.id_producto and mpn.bidon_num != 13201706"; // modificacion 16-10-2019 ********
+			$result_buscar=mysql_query($sql_buscar);
+			$cuantos_buscar=mysql_num_rows($result_buscar);
+
+			//echo "MPN $cuantos_buscar<br>";
+			$sql_buscarimp="SELECT * from mat_prima_importada AS mpi, origenes AS orig, producto AS p WHERE mpi.fecha_salida BETWEEN '$desde' AND '$hasta' and mpi.id_origen =orig.id_origen and mpi.id_producto = $id_producto and mpi.id_producto = p.id_producto and mpi.id_estado_material = 2  order by mpi.id_mat_prima_importada desc";
+			$result_buscarimpo=mysql_query($sql_buscarimp);
+			$cuantos_buscarimportada=mysql_num_rows($result_buscarimpo);
+   			//echo "MPI $cuantos_buscarimportada<br>";		
+			$sqlpt="SELECT ef.id_etiquetados_folios AS id_etiquetados_folios, ef.freprocesado AS freprocesado, p.producto AS producto, c.calibre AS calibre, um.unidad_medida AS unidad_medida, mpro.medidas_productos AS medidas_productos, carpro.caract_producto AS caract_producto, carenv.caract_envases AS caract_envases, ef.contenido_unidades AS contenido_unidades, o.nombreop AS nombreop, o.apellido AS apellido, e.estado_folio AS estado_folio, ef.id_cruce_tablas AS id_cruce_tablas, ef.folio_m3 AS cod_m3 FROM etiquetados_folios AS ef, producto AS p, calibre AS c, medidas_productos AS mpro, unidad_medida AS um, caract_producto AS carpro, caract_envases AS carenv, operarios AS o, estado_folio AS e where ef.id_etiquetados_folios = ef.id_etiquetados_folios and ef.id_producto = p.id_producto and ef.id_calibre = c.id_calibre and ef.id_medidas_productos = mpro.id_medidas_productos and ef.id_unidad_medida = um.id_unidad_medida and ef.id_caract_producto = carpro.id_caract_producto and ef.id_caract_envases = carenv.id_caract_envases and ef.id_operarios=o.id_operarios and ef.id_estado_folio = e.id_estado_folio and ef.id_estado_folio = 6 and ef.freprocesado BETWEEN '$desde' AND '$hasta' order by ef.freprocesado desc";
+$resultpt=mysql_query($sqlpt);
+$cuantospt=mysql_num_rows($resultpt);
+//echo "sqlpt $sqlpt<br>";
+echo "Producto Terminado Procesado $cuantospt<BR>";
+		  ?>
+                
+                <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="3%" bgcolor="#CCCCCC"><span class="titulo">
+                      <input type="checkbox" name="fresco" id="fresco" onclick="formcheck3(this,'1')"/>
+                    </span></td>
+<!--                    <td width="9%" bgcolor="#CCCCCC" class="titulo">&nbsp;Codigo&nbsp;</td>-->
+                    <td width="8%" bgcolor="#CCCCCC" class="titulo">&nbsp;F.Ingreso&nbsp;</td>
+                    <td width="20%" bgcolor="#CCCCCC" class="titulo">&nbsp;Producto</td>
+                    <td width="30%" bgcolor="#CCCCCC" class="titulo">&nbsp;Origen&nbsp;</td>
+                    <td width="7%" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Bidon&nbsp;</td>
+                    <td width="8%" bgcolor="#CCCCCC" class="titulo">&nbsp;Contenido&nbsp;</td>
+                      <? if($permiso34 == 1 and $nivel_usua == 1){?><td width="7%" bgcolor="#CCCCCC" class="titulo">&nbsp;Costo MP&nbsp;</td><? }?>
+                    <td width="8%" bgcolor="#CCCCCC" class="titulo">&nbsp;F.Faena&nbsp;</td>
+                  </tr>
+                  <? 
+				  if ($hasta and $cuantos_buscar) {
+				 
+				  while ($ro=mysql_fetch_array($result_buscar)) { 
+				  $ano=substr($ro[ano], 2, 3);
+				  $base="N".$ano.$ro[id_mat_prima_nacional];
+				  $id_mat_prima_nacional2=$ro[id_mat_prima_nacional];
+				  $id_origen2=$ro[id_origen];
+				  $id_producto2=$ro[id_producto];
+				  $contenido2=$ro[contenido];
+				  $valor_cmp2=$ro[valor_cmp];
+
+	  		   ?>
+                  <tr>
+                    <td class="cajas">
+                     <input type="checkbox" name="id_mat-<? echo $id_mat_prima_nacional2?>" id="id_mat" value="<? echo $id_mat_prima_nacional2?>" />
+                    
+                    </td>
+<!--                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo "N$ro[id_mat_prima_nacional]";?>&nbsp;</td>-->
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($ro[fecha_ingreso]);?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $ro[producto]?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $ro[origen]?></td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $ro[bidon_num]?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $ro[contenido]?>&nbsp;</td>
+                      <? if($permiso34 == 1 and $nivel_usua == 1){?><td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($ro[fecha_faena]);?>&nbsp;</td><? }?>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($ro[fecha_faena]);?>&nbsp;</td>
+                  </tr>
+                  <? } 
+				  }
+				  ?>
+                 <!-- ********************************************************************************************************-->
+        
+                    <tr>
+                      <td bgcolor="#CCCCCC"><span class="titulo">
+                        <input type="checkbox" name="salado" id="salado" onclick="formcheck3(this,'2')"/>
+                      </span></td>
+<!--                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;Codigo&nbsp;</td>-->
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;F.Ingreso&nbsp;</td>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;Producto</td>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;Origen&nbsp;</td>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Bidon&nbsp;</td>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;Contenido&nbsp;</td>
+                      <? if($permiso34 == 1 and $nivel_usua == 1){?>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;Costo MP&nbsp;</td>
+                      <? }?>
+                      <td bgcolor="#CCCCCC" class="titulo">&nbsp;F.Faena&nbsp;</td>
+                    </tr>
+                          <? 
+			  
+			  if ($hasta and $cuantos_buscarimportada) { 
+			
+			  while ($rimp=mysql_fetch_array($result_buscarimpo)) { 
+				  	 //$ano3=substr($rimp[ano], 2, 3);
+				  	 $id_mat_prima_importa3=$rimp[id_mat_prima_importada];
+				  	 $id_origen3=$rimp[id_origen];
+				  	 $id_producto3=$rimp[id_producto];
+				  	 $contenido3=$rimp[contenido];
+				 	 $valor_cmpi3=$rimp[valor_cmpi];
+				  
+				  	 //$base="N".$ano.$rimp[id_mat_prima_nacional];
+				  
+			?>
+                    <tr>
+                    <td class="cajas"><!--<input type="checkbox" name="id_mat3-<? echo $id_mat_prima_importa3?>" id="id_mat3" value="<? echo $id_mat_prima_importa3?>" />-->
+                   <input type="checkbox" name="id_mat3-<? echo $id_mat_prima_importa3?>" id="id_mat3" value="<? echo $id_mat_prima_importa3?>" />
+                    
+                    </td>
+<!--                    <td nowrap="nowrap" class="cajas">&nbsp;<? $largo=strlen($rimp[id_mat_prima_importada]);
+																if($largo == 8){ 
+																$id_mat_prima_importa3=substr($id_mat_prima_importa3,1,7);
+																}
+																if($largo == 9){
+															    $id_mat_prima_importa3=substr($id_mat_prima_importa3,1,8);
+																}
+																echo "I$id_mat_prima_importa3";
+															?>&nbsp;
+                    </td>-->
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($rimp[fecha_ingreso]);?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $rimp[producto]?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $rimp[origen]?></td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $rimp[bidon_num]?>&nbsp;</td>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo $rimp[contenido]?>&nbsp;</td>
+                      <? if($permiso34 == 1 and $nivel_usua == 1){?><td nowrap="nowrap" class="cajas">&nbsp;<?echo $rimp[valor_cmpi]?>&nbsp;</td><? }?>
+                    <td nowrap="nowrap" class="cajas">&nbsp;<?echo format_fecha($rimp[fecha_elaboracion]);?>&nbsp;</td>
+                  </tr>
+                 <? } //  if ($hasta and $cuantos_buscarimportada) { 
+			 	 }// while ($rimp=mysql_fetch_array($result_buscarimpo)) { 
+				 ?>
+                 <!-- ********************************************************************************************************-->
+              </table>
+              
+              <table width="100%" border="1" cellpadding="0" cellspacing="0">
+        <tr class="titulo">
+        <td width="12" height="19" nowrap="nowrap" bgcolor="#FF9933"><center>
+          <input type="checkbox" name="salado2" id="salado2" onclick="formcheck3(this,'3')"/>
+        </center></td>
+        <td width="13" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;N&ordm;</strong></td>
+          <td width="67" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;FOLIO PT</strong></td>
+          <td width="30" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;COD</strong></td>
+          <td width="70" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;PRODUCTO</strong></td>
+          <td width="65" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;CALIBRE</strong></td>
+          <td width="75" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;&nbsp;U/MEDIDA</strong></td>
+          <td width="59" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;MEDIDAS</strong></td>
+          <td width="44" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;C/PRO</strong></td>
+          <td width="52" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;C/ENV</strong></td>
+          <td width="83" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;CONTENIDO</strong></td>
+          <td width="83" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;OPERARDOR</strong></td>
+          <td width="52" nowrap="nowrap" bgcolor="#FF9933"><strong>&nbsp;ESTADO</strong><strong>&nbsp;</strong></td>
+          <td width="53" nowrap="nowrap" bgcolor="#FF9933">&nbsp;F/REPROCESO</td>
+          </tr>
+        <?
+	if($cuantospt){
+    $i = 0;
+    while ($rowpt=mysql_fetch_array($resultpt))
+    {
+	$i++;
+	$id_etiquetados_foliospt=$rowpt[id_etiquetados_folios];
+	$freprocesado=$rowpt[freprocesado];
+	$estado_folio=$rowpt[estado_folio];
+	$id_cruce_tablas=$rowpt[id_cruce_tablas];
+	$producto=$rowpt[producto];
+	$calibre=$rowpt[calibre];
+	$unidad_medida=$rowpt[unidad_medida];
+	$medidas_productos=$rowpt[medidas_productos];
+	$caract_producto=$rowpt[caract_producto];
+	$caract_envases=$rowpt[caract_envases];
+	$contenido_unidadespt=$rowpt[contenido_unidades];
+	$nom = strtoupper($rowpt[nombreop]);
+	$apell = strtoupper($rowpt[apellido]);
+	$id_m3=$rowpt[cod_m3];
+	
+	
+  ?>
+        <tr class="cajas">
+          <td height="8" nowrap="nowrap">
+          
+            <?
+        
+	 	 if($id_etiquetados_foliospt)
+	 	 {
+		 $id_etiquetados_foliospt1="3$id_etiquetados_foliospt";
+		 }
+		
+		  ?>
+          
+          <input type="checkbox" name="id_pt-<? echo $id_etiquetados_foliospt?>" id="id_pt" value="<? echo $id_etiquetados_foliospt1?>" />
+          </td>
+          <td height="8" nowrap="nowrap"><? echo $i?></td>
+          <td nowrap="nowrap">PT<? echo $id_m3?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $id_cruce_tablas?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $producto ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $calibre ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $unidad_medida ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $medidas_productos ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $caract_producto ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $caract_envases ?></td>
+          <td width="83" nowrap="nowrap" >&nbsp;<? echo $contenido_unidadespt ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo "$nom $apell"?></td>
+          <td nowrap="nowrap" >&nbsp;<? $est = strtoupper($estado_folio); echo $est ?></td>
+          <td nowrap="nowrap" >&nbsp;<? echo $freprocesado?></td>
+          </tr>
+        <?
+		 
+		}//   while ($rowpt=mysql_fetch_array($resultpt))
+	} //if($cuantospt){
+		
+
+	?>
+        </table>
+              <? } // Vemos si contiene datos la busqueda ?>
+            </td>
+          </tr>
+  </table> 
+  
+   
+ 	<? 
+	
+	} // fin trazabilidad?>
+</form>

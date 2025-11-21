@@ -1,0 +1,144 @@
+<?
+if($modi){
+ $sql_modificar="UPDATE  etiquetas_unidad set hasta='$hasta' where id_origen=$id_origen";
+ $rest=mysql_query($sql_modificar);
+}?>
+
+<HTML>
+<style type="text/css">
+<!--
+.cajas {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.titulo {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; }
+-->
+</style>
+<script language="JavaScript"> 
+function Abrir_ventana (pagina) { 
+var opciones="toolbar=yes,location=yes, directories=yes, status=yes, menubar=yes, scrollbars=yes, resizable=yes, width=480, height=401, top=100, left=100"; 
+window.open(pagina,"",opciones); 
+} 
+</script>
+<BODY>
+<!--<form name="form1" method="post" action="etiqueta_print.php" target="popup"
+	onsubmit="window.open('', 'popup', 'width = 296, height = 349, top=0, left=0, scrollbars=yes')">-->
+    <form id="form1" name="form1" method="post" action="">
+<table width="599" border="0" align="center">
+  <tr>
+    <td width="593" height="30" class="titulo">Etiquetas P/Unidad de Producci&oacute;n </td>
+  </tr>
+  <tr>
+    <td><table width="600" border="1" align="center" bordercolor="#CCCCCC">
+        <tr>
+          <td><table width="440" border="0" align="center">
+            <tr>
+              <td width="185" nowrap="nowrap" class="titulo"   > Indicar A&ntilde;o</td>
+              <td width="245"><input name="fhoyindicada" type="text" class="cajas" id="fhoyindicada" value="<? echo $fhoyindicada?>"> 
+                <span class="cajas">EJ: 2012</span></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo"   >Origen </td>
+              <td width="245"><? $origenes=crea_origenes_etiplan($link,$id_origen,1);
+		echo $origenes;?>
+                <? //echo "$id_origen";?></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo"    >Ultimo Correlativo</td>
+              <td>
+              <?
+              $sqli="select * from etiquetas_unidad where id_origen ='$id_origen' order by fecha_emision desc";
+			  $resulti=mysql_query($sqli);
+			  $cuantosi=mysql_num_rows($resulti);
+			 if($cuantosi)
+			 {
+			 if ($rowi=mysql_fetch_array($resulti))
+        	    {
+				$hasta=$rowi[hasta];
+			 ?>
+             <input name="hasta" type="text" id="hasta"  value="<? echo $hasta?>" size="5" maxlength="5" />
+             <input name="modi" type="submit" class="cajas" id="modi" value="Modificar">
+             <? 
+			 }
+			 }
+			 ?> 
+			 <?
+			 if(!$cuantosi){
+				 $hastanuevo=0;
+			 ?>
+	         <input name="hastanuevo" type="text" id="hastanuevo"  value="<? echo $hastanuevo?>" size="5" maxlength="5" />
+		     <? } ?>
+             </td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo" >Cantidad de Etiquetas </td>
+              <td nowrap="nowrap" >
+             
+                 <input name="cantidad" type="text" id="cantidad"  value="<? echo $cantidad?>"size="5" maxlength="5" />
+                <span class="cajas">(Indique la cantidad de etiquetas que desea imprimir)</span></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" ><span class="titulo">Responsable</span></td>
+              <td nowrap="nowrap" ><? $operarios=crea_operarios_etiplan($link,$id_operarios,1);
+		        echo $operarios;?><? echo "$id_operarios";?></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo" >Planta de Origen</td>
+              <td nowrap="nowrap" ><span class="cajas">
+                <select name="radio" class="cajas" onChange="JavaScript:document.form1.submit();">
+                <option value="1" <?php if($_POST['radio']==1) echo 'selected="selected" ';?>>Habilitar</option>
+                <option value="2" <?php if($_POST['radio']==2) echo 'selected="selected" ';?>>Deshabilitar</option>
+              </select>
+              </span></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo" >A Menos 3&ordm; C</td>
+              <td nowrap="nowrap" ><span class="cajas">
+                <select name="radio2" class="cajas" onChange="JavaScript:document.form1.submit();">
+                <option value="11" <?php if($_POST['radio2']==11) echo 'selected="selected" ';?>>Habilitar</option>
+                <option value="22" <?php if($_POST['radio2']==22) echo 'selected="selected" ';?>>Deshabilitar</option>
+              </select>
+              </span></td>
+            </tr>
+            <tr>
+              <td nowrap="nowrap" class="titulo" >T&ordm; Ambiente</td>
+              <td nowrap="nowrap" ><span class="cajas">
+                <select name="radio3" class="cajas" onChange="JavaScript:document.form1.submit();">
+                  <option value="13" <?php if($_POST['radio3']==13) echo 'selected="selected" ';?>>Habilitar</option>
+                  <option value="23" <?php if($_POST['radio3']==23) echo 'selected="selected" ';?>>Deshabilitar</option>
+                </select>
+              </span></td>
+            </tr>
+            <tr>
+              <td colspan="2" nowrap="nowrap" ><? $id_bode=$row[id_mat_prima_nacional];?></td>
+            </tr>
+            <tr>
+              <td colspan="2" nowrap="nowrap">
+              <? if($id_origen and $id_operarios and $cantidad and $fhoyindicada){?>
+              
+              <? if($id_origen == 5 or $id_origen == 6 or $id_origen == 28) {?>
+
+              <div align="center">
+              <a href="javascript:Abrir_ventana('etiqueta_matadero.php?id_origen=<?echo $id_origen?>&id_operarios=<?echo $id_operarios?>&cantidad=<?echo $cantidad?>&hasta=<? echo $hasta + 1?>&hastanuevo=<? echo $hastanuevo?>&radio=<? echo $radio?>&radio2=<? echo $radio2?>&radio3=<? echo $radio3?>&fhoyindicada=<? echo $fhoyindicada?>')"><img src="jpg/impresora.jpg" width="35" height="39" border="0" /></a>
+              </div>
+
+             <? } else { ?>
+
+              <div align="center">
+              <a href="javascript:Abrir_ventana('etiqueta_print.php?id_origen=<?echo $id_origen?>&id_operarios=<?echo $id_operarios?>&cantidad=<?echo $cantidad?>&hasta=<? echo $hasta + 1?>&hastanuevo=<? echo $hastanuevo?>&radio=<? echo $radio?>&radio2=<? echo $radio2?>&radio3=<? echo $radio3?>&fhoyindicada=<? echo $fhoyindicada?>')"><img src="jpg/impresora.jpg" width="35" height="39" border="0" /></a>
+              </div>
+              <? } 
+                } ?>
+
+              </td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+</form>
+</BODY>
+
+</HTML>

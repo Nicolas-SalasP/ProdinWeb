@@ -1,0 +1,1 @@
+<? echo "Fecha $f_inicio<br>Glosa $glosa";?>

@@ -1,0 +1,889 @@
+<?error_reporting(0);
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$sql_xx="SELECT * FROM paking where id_paking = id_paking order by folio_piking desc LIMIT 0,1";
+$result_xx=mysql_query($sql_xx);
+$ultimo=mysql_fetch_array($result_xx);
+$idxx=$ultimo[id_paking] + 1;
+
+//echo "id $idxx";
+
+$sql_id="SELECT * FROM paking where id_paking = id_paking order by folio_piking desc LIMIT 0,1";
+$result_id=mysql_query($sql_id);
+
+
+if ($r=mysql_fetch_array($result_id))
+{
+$cuantosfo=$r[folio_piking];
+$id=$cuantosfo + 1;
+}
+
+$folio_pinking2=$cuantosfo+1;
+
+
+if($id_ped){
+				$sql="SELECT * 
+							from etiquetados_folios as etf
+							left join producto as pro on pro.id_producto = etf.id_producto
+							left join estado_folio as esf on esf.id_estado_folio = etf.id_estado_folio
+							where etf.id_pedidos= $id_ped and ((etf.id_estado_folio=2) or (etf.id_estado_folio=8))";
+				$result=mysql_query($sql);
+				$cuantossi=mysql_num_rows($result);
+
+
+
+if ($enpic){
+
+	while ($row=mysql_fetch_array($result))
+    {
+	$id_etiquetados_folios=$row[id_etiquetados_folios];
+    $sqlsulta="SELECT * FROM paking WHERE id_etiquetados_folios = $id_etiquetados_folios";
+  	$result_consulta=mysql_query($sqlsulta);
+  	$cuantos_consulta=mysql_num_rows($result_consulta);
+	
+
+      if(!$cuantos_consulta)
+	  {
+ 		   $fecha_ingreso_paking  =date("Y-m-d");
+   		   $sql="INSERT INTO paking (folio_piking,id_paking_relacion,id_etiquetados_folios,fecha_ingreso_paking) values ($folio_pinking2,$idxx,$id_etiquetados_folios,'$fecha_ingreso_paking')";
+						$res=mysql_query($sql);
+
+			 $envio_pickhist=date("Y-m-d");
+		    $sq_up="UPDATE etiquetados_folios
+					SET id_estado_folio = '3',
+					    fpicking = '$envio_pickhist',
+					    id_destinos = '$id_destinos'
+					WHERE id_etiquetados_folios = $id_etiquetados_folios";
+						$rest_up=mysql_query($sq_up);
+			
+	  }
+	}
+			$fech_envio_picking222=date("Y-m-d");
+		$sqenviopic="UPDATE pedido 
+					set folio_piking ='$folio_pinking2', 
+					id_paking_relacion='$idxx', 
+					fech_envio_picking ='$fech_envio_picking222'  
+					where id_pedidos=$id_ped";
+			$restenviopic=mysql_query($sqenviopic);
+
+		echo"<meta http-equiv=\"refresh\" content=\"0;URL=sistema.php?modulo=pedido_listar.php\">";
+  }
+
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+$fip=format_fecha_sin_hora($fech_ingreso_pedido);
+$ftp=format_fecha_sin_hora($fech_termino_pedido);
+$fdp=format_fecha_sin_hora($fech_despacho_pedido);
+$year=date("Y"); //año
+//$mysql_datetime = date("Y-m-d H:i:s");
+//$mysql_date = date("Y-m-d");
+//$mysql_time = date("H:i:s");
+
+
+if($modificarp){
+
+
+
+  if($fecha_prioridad){
+  $fecha_prioridad = explode(" ",$fecha_prioridad);
+  $fecha_prioridad =  $fecha_prioridad[0];
+  $fecha_prioridad=date("$fecha_prioridad-H:i:s");
+  $dat4=split(" ",$fecha_prioridad);
+  $dat=split("-",$dat4[0]);
+  $a=$dat[3];
+  $b=$dat[2];
+  $c=$dat[1];
+  $d=$dat[0];
+
+  $largo = strlen($c);
+
+  $resul_c = $c - 1;
+  //echo "<br>  $resul_c  <br>";
+  $largo2 = strlen($resul_c);
+  if($largo2 != 2)
+  {
+  $resul_c2="0$resul_c";
+  }else{
+
+  $resul_c2;
+  }
+
+   $fec_resok="$b-$resul_c2-$d";
+
+
+
+
+$fec="$b-$c-$d $a";
+//echo "fec $fec";
+  }else{
+
+  $fecha_prioridad;
+
+  }
+$sql_m="UPDATE pedido set id_destinos='$id_destinos',fecha_prioridad ='$fec', notificacion_email='$notificacion_email2' where id_pedidos=$id_pedidos";
+$rest=mysql_query($sql_m);
+//echo $sql_m;
+
+ foreach ($_POST as $key => $value)
+               {
+                $dat=split("-",$key);
+                if ($dat[0] == 'cantidadbc')
+                  {
+                   $id=$dat[1];
+                   $cantidadbc=$_POST["cantidadbc-$id"];
+
+				   $sqlto="SELECT * FROM pedido_tabla where id_pedido_tablas=$id ";
+			  	   $resulto=mysql_query($sqlto);
+
+
+				   while ($rowff=mysql_fetch_array($resulto))
+   					{
+					 $id_pedido_tablas333 =$rowff[id_pedido_tablas];
+	 				 $id_pedidos333 =$rowff[id_pedidos];
+					 $id_cruce_tablas333 =$rowff[id_cruce_tablas];
+					 $cantidadb333 =$rowff[cantidadb];
+					 $mod_user =$rowff[id_Users];
+
+					 $sqlto334="SELECT * FROM pedido_armado_automatico where id_pedidos=$id_pedidos333 and id_pedido_tablas = $id_pedido_tablas333 and id_cruce_tablas = $id_cruce_tablas333 ";
+			  		 $resulto334=mysql_query($sqlto334);
+					 $cuantoss_to334=mysql_num_rows($resulto334);
+				   }
+
+				//echo "listo $cuantoss_to334 / cantidadbc $cantidadbc<br>";
+
+				$sql="UPDATE pedido_tabla SET cantidadb='$cantidadbc', id_Users='$user' where id_pedido_tablas = $id";
+				$rest=mysql_query($sql);
+}
+				}
+				//if($cantidadb333 == $cantidadbc){
+				//echo " la cantidad ingresa [$cantidadbc] es igual<br>";
+				//}
+
+				if($cantidadb333 > $cantidadbc or $cuantoss_to334 > $cantidadbc){
+				$rea=$cuantoss_to334 - $cantidadbc;
+				//echo "la cantidad ingresa [$cantidadbc] es menor = $rea<br>";
+
+				for($i=0; $i < $rea; $i++){
+
+				   $sqltod="SELECT * FROM pedido_tabla where id_pedido_tablas=$id ";
+			  	   $resultod=mysql_query($sqltod);
+				   	while ($rowffd=mysql_fetch_array($resultod)){
+					$sqlto334d="SELECT * FROM pedido_armado_automatico where id_pedidos=$rowffd[id_pedidos] and id_pedido_tablas = $rowffd[id_pedido_tablas] and id_cruce_tablas =$rowffd[id_cruce_tablas]";
+					$resulto334d=mysql_query($sqlto334d);
+					//echo "sqlto334d $sqlto334d<br>";
+					$cuantoss_to334d=mysql_num_rows($resulto334d);
+
+					if ($rowffdf=mysql_fetch_array($resulto334d)){
+					$sqlb="UPDATE  etiquetados_folios  set id_pedidos='0' where id_etiquetados_folios=$rowffdf[id_etiquetados_folios]";
+			 		$resultb=mysql_query($sqlb);
+					//echo "$sqlb $sqlb <BR>";
+			    	$sqleb="DELETE from pedido_armado_automatico where id_etiquetados_folios = $rowffdf[id_etiquetados_folios]";
+					$resulteb=mysql_query($sqleb);
+					}//if ($rowffdf=mysql_fetch_array($resulto334d))
+					}//while ($rowf2=mysql_fetch_array($resulto2))
+
+
+				}//for($i=0; $i < $cantidadbc; $i++){
+
+				}
+
+				//if($cantidadb333 < $cantidadbc){
+				//$rea=$cantidadb333 - $cantidadbc;
+				//echo "la cantidad ingresa [$cantidadbc] es mayor = $rea<br>";
+				//}
+
+
+			  //echo "cantidadb333 $cantidadb333   /    cantidadbc $cantidadbc ";
+			    //$rea=$cantidadbc - $cantidadb333;
+			   //echo "resulllllllllllllll   $rea<br>";
+			 // if($cantidadbc < $cantidadb333){
+
+
+
+				//if(!$re){
+
+				/*	for($i=0; $i < $rea; $i++){
+
+
+				   $sqltod="SELECT * FROM pedido_tabla where id_pedido_tablas=$id ";
+			  	   $resultod=mysql_query($sqltod);
+
+				   while ($rowffd=mysql_fetch_array($resultod))
+   					{
+					$sqlto334d="SELECT * FROM pedido_armado_automatico where id_pedidos=$rowffd[id_pedidos] and id_pedido_tablas = $rowffd[id_pedido_tablas] and id_cruce_tablas =$rowffd[id_cruce_tablas]";
+					$resulto334d=mysql_query($sqlto334d);
+					echo "sqlto334d $sqlto334d<br>";
+					$cuantoss_to334d=mysql_num_rows($resulto334d);
+
+					 if ($rowffdf=mysql_fetch_array($resulto334d))
+   					{
+					$sqlb="UPDATE  etiquetados_folios  set id_pedidos='0' where id_etiquetados_folios=$rowffdf[id_etiquetados_folios]";
+			 		$resultb=mysql_query($sqlb);
+					echo "$sqlb $sqlb <BR>";
+			    	$sqleb="delete from pedido_armado_automatico  where  id_etiquetados_folios = $rowffdf[id_etiquetados_folios]";
+					$resulteb=mysql_query($sqleb);
+					 }
+					 }//while ($rowf2=mysql_fetch_array($resulto2))
+				echo "borrarrrrrrrrrrrrrr $i<br>";
+
+				//}
+
+				//}
+				  }//if($cantidadb333 < $cantidadbc)*/
+
+
+
+//****************************************************************
+
+}
+
+if($grabarfilas and $cantidadb){
+$sqlsino="SELECT * FROM pedido_tabla where id_pedidos=$id_pedidos and id_cruce_tablas=$codigo";
+$resultsino=mysql_query($sqlsino);
+$cuantossino=mysql_num_rows($resultsino);
+if(!$cuantossino and $cantidadb){
+$fecha_ingreso_producto_pedido =date("Y-m-d");
+$sql_p="insert into pedido_tabla (id_pedidos,id_cruce_tablas,cantidadb,fecha_ingreso_producto_pedido,costo,venta, dolar, euro, tot_cost, tot_vent,tot_margen) values ('$id_pedidos','$codigo','$cantidadb','$fecha_ingreso_producto_pedido','$costo','$venta','$dolar','$euro','$subtot_costo','$res_venta','$margen')";
+$result_p=mysql_query($sql_p,$link);
+
+}else{
+$mensajesino=1;
+}//if(!$cuantossino){
+}//if($grabarfilas){
+
+
+if($eliminar and $id_pedido_tablas != 0) {
+ foreach ($id_pedido_tablas as $key)
+ {
+ $sql="delete from pedido_tabla where  id_pedido_tablas = $key";
+ $res=mysql_query($sql);
+
+ $sql2="select * from pedido_armado_automatico  where  id_pedido_tablas = $key";
+ $res2=mysql_query($sql2);
+
+ while ($row2=mysql_fetch_array($res2)){
+ $id_etiquetados_folios =$row2[id_etiquetados_folios];
+ $sql3="update etiquetados_folios set id_pedidos='0' where id_etiquetados_folios = $id_etiquetados_folios";
+ $res3=mysql_query($sql3);
+ }
+ $sql4="delete from pedido_armado_automatico where  id_pedido_tablas = $key";
+ $res4=mysql_query($sql4);
+ }
+
+
+}//if($eliminar) {
+
+
+
+if($generar){
+  $fecha_prioridad = explode(" ",$fecha_prioridad);
+  $fecha_prioridad =  $fecha_prioridad[0];
+  $fecha_prioridad=date("$fecha_prioridad-H:i:s");
+
+  $dat4=split(" ",$fecha_prioridad);
+  $dat=split("-",$dat4[0]);
+  $a=$dat[3];
+  $b=$dat[2];
+  $c=$dat[1];
+  $d=$dat[0];
+
+  $largo = strlen($c);
+
+  $resul_c = $c - 1;
+
+  $largo2 = strlen($resul_c);
+ // echo "<br>$largo2 <br>";
+  if($largo2 != 2)
+  {
+  $resul_c2="$resul_c";
+ // echo "<br>if 1 $resul_c2<br>";
+  }else{
+ $resul_c2="$resul_c";
+   // echo "<br>if 2 $resul_c2<br>";
+  }
+
+   $fec_resok="$b-$resul_c2-$d";
+
+
+if($restricfec2){
+
+$sql2222="SELECT * FROM etiquetados_folios AS etiq, producto AS pro, cruce_tablas AS cr where etiq.id_etiquetados_folios = etiq.id_etiquetados_folios and etiq.id_estado_folio != 3 and etiq.id_estado_folio != 10 and etiq.id_estado_folio != 7 and etiq.id_estado_folio != 12 and etiq.id_estado_folio != 5 and etiq.id_estado_folio != 6 and etiq.id_estado_folio != 0  and etiq.id_estado_folio != 8 and etiq.id_estado_folio != 4 and etiq.id_producto = pro.id_producto and etiq.id_cruce_tablas = cr.id_cruce_tablas and etiq.id_pedidos = 0 and etiq.ocupado = 0 and etiq.ano >= 2008 and etiq.f_elaboracion  <= '$fec_resok' order by etiq.f_elaboracion asc";
+//echo "ssssssssssssss1<br>";
+//echo"<meta http-equiv=\"refresh\" content=\"0;URL=sistema.php?modulo=pedido_modificar.php&id_ped=$id_ped\">";
+
+}else{
+$sql2222="SELECT * FROM etiquetados_folios AS etiq, producto AS pro, cruce_tablas AS cr where etiq.id_etiquetados_folios = etiq.id_etiquetados_folios and etiq.id_estado_folio != 3 and etiq.id_estado_folio != 10 and etiq.id_estado_folio != 7 and etiq.id_estado_folio != 12 and etiq.id_estado_folio != 5 and etiq.id_estado_folio != 6 and etiq.id_estado_folio != 0 and etiq.id_estado_folio != 8 and etiq.id_estado_folio != 4 and etiq.id_producto = pro.id_producto and etiq.id_cruce_tablas = cr.id_cruce_tablas and etiq.id_pedidos = 0 and etiq.ocupado = 0 and etiq.ano >= 2008 order by etiq.f_elaboracion asc";
+//echo"<meta http-equiv=\"refresh\" content=\"0;URL=sistema.php?modulo=pedido_modificar.php&id_ped=$id_ped\">";
+
+//echo "sssssss2<br>";
+}
+$result2222=mysql_query($sql2222);
+$cuantos=mysql_num_rows($result2222);
+
+//echo "result2222 $result2222<br>";
+
+
+//echo "sql2222 $sql2222";
+//echo "cuantos $cuantos";
+
+while ($row222=mysql_fetch_array($result2222))
+    {
+	$id_etiquetados_foliosposible=$row222[id_etiquetados_folios];
+	$id_cruce_tablasposible=$row222[id_cruce_tablas];
+	 //echo "id_pedidos $id_pedidos2<br>";
+	$sql_consul="SELECT * FROM pedido_tabla WHERE id_pedidos = $id_ped";
+	$result_consul=mysql_query($sql_consul);
+ 	while ($rowp=mysql_fetch_array($result_consul))
+    {
+	 $id_pedido_tablas=$rowp[id_pedido_tablas];
+	 $id_pedidos=$rowp[id_pedidos];
+	 $id_cruce_tablas1=$rowp[id_cruce_tablas];
+	 $cantidadb=$rowp[cantidadb];
+
+
+ 	 $sql_consul2="SELECT * FROM pedido_armado_automatico  WHERE id_pedidos = $id_pedidos and id_cruce_tablas = $id_cruce_tablas1";
+	 $result_consul2=mysql_query($sql_consul2);
+	 $cant_resgistros=mysql_num_rows($result_consul2);
+
+     //echo " <br>cantidadb $cantidadb - cant_resgistros $cant_resgistros<br>";
+    // echo "id_cruce_tablas1 $id_cruce_tablas1  - codigonuevo $codigonuevo";
+     if($cantidadb != $cant_resgistros){
+	// echo "paso<br>";
+	    if($id_cruce_tablas1 == $id_cruce_tablasposible){
+		//echo "hola";
+	  	 $id_pedido_tablasw=$rowcant[id_pedido_tablas];
+	 	 $id_cruce_tablas2=$rowcant[id_cruce_tablas];
+	 	 $sql_autom="insert into pedido_armado_automatico (id_pedidos,id_pedido_tablas,id_cruce_tablas,id_etiquetados_folios) values ('$id_pedidos','$id_pedido_tablas','$id_cruce_tablasposible','$id_etiquetados_foliosposible')";
+		// echo "<br>$sql_autom<br>";
+		 $result_autom=mysql_query($sql_autom,$link);
+	  	 $sql="UPDATE etiquetados_folios set  id_pedidos='$id_ped' where id_etiquetados_folios=$id_etiquetados_foliosposible";
+		 $result=mysql_query($sql);
+		// echo "<br>$sql<br>";
+	  	//}//if($rowcant=mysql_fetch_array($result_consul2))
+		}//if($id_cruce_tablas1 == $codigonuevo){
+	  }//if($cant_resgistros != $cantidadb){
+	 // $contador_vueltas++;
+	 }//while ($rowp=mysql_fetch_array($result_consul))
+	// echo "<br>contador de vueltas $contador_vueltas<br>";
+ }
+}
+
+if($id_ped){
+	
+$sql="SELECT * 
+FROM pedido as ped
+left outer join destinos as des on ped.id_destinos = des.id_destinos
+left outer join tipo_moneda as tm on des.id_tipo_moneda = tm.id_tipo_moneda
+left outer join usuarios as usu on ped.id_usuario=usu.id_usuario
+where id_pedidos=$id_ped 
+ORDER BY id_pedidos desc LIMIT 1";
+$result=mysql_query($sql);
+$cuantos=mysql_num_rows($result);
+
+}else{
+$sql="SELECT * FROM pedido where id_pedidos=id_pedidos ORDER BY id_pedidos desc LIMIT 1";
+$result=mysql_query($sql);
+$cuantos=mysql_num_rows($result);
+}
+
+
+?>
+
+<script language="javascript" type="text/javascript">
+function Verifica_datos(){
+var codigo = 1;
+codigo=document.getElementById("codigo");
+frm=document.getElementById("form1");
+frm.action="?modulo=pedido_modificar.php&id_ped=<?echo $id_ped?>&sumfila=1&codigo=" + codigo.value;
+frm.submit();
+return true;
+}
+</script>
+<script language="javascript">
+function solo_numeros(){
+var key=window.event.keyCode;
+if (key < 48 || key > 57){
+window.event.keyCode=0;
+}}
+</script>
+<script language="JavaScript" type="text/javascript" src="lib/cal.js">
+</script>
+
+<style type="text/css">
+<!--
+.cajas {font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.titulo {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; }
+.titulo14 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; }
+.alarma {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;  color: #FF0000;}
+.rojo10 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FF0000; }
+-->
+</style>
+
+<form name="form1" id="form1" method="post" action="">
+<? if(!$nuevo){?>
+<table width="673" border="0">
+  <tr>
+<!--    <td width="473">
+   if($permiso47 == 1 and $nivel_usua == 1){?><div align="right"><a href="?modulo=pedido_ingresar.php" class="titulo">Ingresar Nuevo Pedido</a></div> -->
+
+    <td width="473"><div align="right"><a href="?modulo=pedido_ingresar.php" class="titulo">Ingresar Nuevo Pedido</a></div>
+    </td>
+    <td width="192"><div align="right"><a href="?modulo=pedido_listar.php" class="cajas">Volver Listado de Pedidos</a></div></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="669" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="663"><?
+	while ($row=mysql_fetch_array($result))
+        {
+	  $id_pedidos=$row[id_pedidos];
+		$fech_ingreso_pedido=format_fecha2($row[fech_ingreso_pedido]);
+		$fecha_prioridad=format_fecha2($row[fecha_prioridad]);
+		$fech_despacho_pedido=format_fecha_sin_hora($row[fech_despacho_pedido]);
+		$id_usuario=$row[id_usuario];
+		$id_destinos=$row[id_destinos];
+		$tipo_moneda=$row[tipo_moneda];
+		$user=$row[username];					
+
+?>
+            <table width="663" border="1" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td colspan="2" nowrap="nowrap" class="titulo">&nbsp;&nbsp;Cliente<span class="cajas">
+                  <?
+				  //echo "destinos del while $id_destinos";
+
+				  list ($id_destinos2, $destinos, $restricfec2) = crea_destinos2222($link,$id_destinos,$restricfec);
+				  echo "$destinos<br>";
+				   //$restricfec3=$restricfec2;
+				   //echo "id destinos $id_destinos2";
+				  //echo "$restricfec2";
+			      //$destinos= crea_destinos2222($link,$row[id_destinos],$restricfec);
+			      //echo $destinos; 
+				  //$id_destinos=$row[id_destinos];
+			   ?>
+			   <input name="restricfec2" type="hidden" value="<?echo $restricfec2?>" /></span></td>
+                <td nowrap="nowrap" class="titulo"><div align="center" class="titulo14">Folio Pedido</div></td>
+              </tr>
+              <tr>
+                <td colspan="2" nowrap="nowrap" class="titulo"><span class="cajas">&nbsp;&nbsp;Divisa: &nbsp; <?echo $tipo_moneda;?> </span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creado por: <?echo $user?></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modificado por: <?echo $mod_user?></span></td>
+                <td nowrap="nowrap" class="titulo"><div align="center"><span class="titulo14"><? echo $id_pedidos?></span></div></td>
+              </tr>
+              <tr>
+                <td width="237" nowrap="nowrap" class="titulo">&nbsp;Fecha Ingreso </td>
+                <td width="230" nowrap="nowrap" class="titulo">&nbsp;Fecha  Despacho </td>
+                <td width="185" nowrap="nowrap" class="titulo"><span class="cajas">&nbsp;Notificaci&oacute;n E-mail </span></td>
+              </tr>
+              <tr>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $fech_ingreso_pedido;?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;
+                  <input name="fecha_prioridad" type="text" class="cajas" value="<? echo $fecha_prioridad?>" size="17" maxlength="30" />
+
+                  <a href="javascript:show_Calendario('form1.fecha_prioridad');" >Ver</a>
+				  			  </td>
+                <td nowrap="nowrap" class="cajas"><input name="id_pedidos" type="hidden" value="<?echo $row[id_pedidos]?>" />
+                    <? if($row[notificacion_email]==0){?>
+                    <input name="notificacion_email2" type="checkbox" value="1"/>
+                    <? }?>
+                    <? if($row[notificacion_email]==1){?>
+                    <input name="notificacion_email2" type="checkbox" value="1" checked="checked"/>
+                    <? }?>
+                  (E-mail) </td>
+              </tr>
+            </table>
+
+          <table width="663" border="1" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="56" bgcolor="#CCCCCC" class="titulo">&nbsp;
+
+				<div align="center">
+                    <input name="eliminar" type="submit" class="cajas" id="eliminar" value="X" />
+                </div>
+				</td>
+                <td width="46" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo"><div align="center">ID</div></td>
+                <td width="226" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;Producto</td>
+                <td width="48" bgcolor="#CCCCCC" class="titulo">&nbsp;Calibre</td>
+                <td width="69" bgcolor="#CCCCCC" class="titulo">&nbsp;Unid./Med.</td>
+                <td width="49" bgcolor="#CCCCCC" class="titulo">&nbsp;Medida</td>
+                <td width="52" bgcolor="#CCCCCC" class="titulo"><div align="center">Bidones </div></td>
+                <td width="43" bgcolor="#CCCCCC" class="titulo"><div align="center">Listos</div></td>
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">Contenido</div></td>
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">Costo Uni. CLP</div></td>
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">Precio Venta Uni.</div></td>
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">TOT. Costo</div></td>                
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">TOT. Venta</div></td>
+                <td width="64" bgcolor="#CCCCCC" class="titulo"><div align="center">Margen Util.</div></td>
+              </tr>
+              <?
+      $sqlp="SELECT * FROM pedido_tabla AS pt, cruce_tablas AS ct, producto AS p, calibre AS c, unidad_medida AS um, medidas_productos AS mp, pedido as pe, destinos as ds where pt.id_pedidos = $id_pedidos and pt.id_cruce_tablas = ct.id_cruce_tablas and ct.id_producto = p.id_producto and ct.id_calibre = c.id_calibre and ct.id_unidad_medida = um.id_unidad_medida and ct.id_medidas_productos = mp.id_medidas_productos and pt.id_pedidos = pe.id_pedidos and pe.id_destinos = ds.id_destinos";
+	  $resultp=mysql_query($sqlp);
+	  $cuantosp=mysql_num_rows($resultp);
+
+
+	  while ($rowp=mysql_fetch_array($resultp))
+      {
+	  $id_pedido_tablas=$rowp[id_pedido_tablas];
+	  $id_cruce_tablas=$rowp[id_cruce_tablas];
+	  $id_pedidos=$rowp[id_pedidos];
+	  $cantidad+=$rowp[cantidadb];
+	  $costo=$rowp[costo];
+	  $venta=$rowp[venta];
+	  $tot_cost=$rowp[tot_cost];	  
+	  $tot_vent=$rowp[tot_vent];
+	  $tot_margen=$rowp[tot_margen];
+	  $id_etiqueta_idioma=$rowp[id_etiqueta_idioma];
+	  $id_tipo_moneda=$rowp[id_tipo_moneda];	  
+
+?>
+              <tr>
+                <td class="cajas"><div align="center">
+                    <?
+				$sqlbus="SELECT * FROM pedido_armado_automatico where id_pedidos = $id_pedidos and  id_cruce_tablas = $id_cruce_tablas";
+				$resultbus=mysql_query($sqlbus);
+				$cuantosbus=mysql_num_rows($resultbus);
+				if(!$cuantosbus){
+			  ?>
+                    <input name="id_pedido_tablas[]" type="checkbox" class="cajas"  value="<?echo $rowp[id_pedido_tablas];?>" />
+                    <? }else{ ?>
+                  X
+                  <? }?>
+                </div></td>
+                <td nowrap="nowrap" class="cajas"><div align="center"><? echo $rowp[id_cruce_tablas];?></div></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $rowp[producto];?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $rowp[calibre];?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $rowp[unidad_medida];?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $rowp[medidas_productos];?></td>
+                <td nowrap="nowrap" class="titulo14"><div align="center">
+                  <input name="cantidadbc-<?echo $id_pedido_tablas?>" type="text" id="cantidadbc" value="<? echo $rowp[cantidadb]?>" size="3" maxlength="3" />
+                </div></td>
+                <td nowrap="nowrap" class="titulo14"><div align="center">
+                    <?
+			  $sqlto="SELECT * FROM pedido_armado_automatico where id_pedidos=$id_pedidos and id_cruce_tablas=$id_cruce_tablas";
+			  $resulto=mysql_query($sqlto);
+   			  $cuantos_to=mysql_num_rows($resulto);
+			  $sum_to+=$cuantos_to;
+			  echo $cuantos_to;
+			  ?>
+                </div></td>
+                <td nowrap="nowrap" class="titulo14">
+				  <div align="right"><span class="titulo14">&nbsp;
+		              <?
+			$sql_contenido="SELECT * FROM etiquetados_folios where id_pedidos=$id_pedidos and id_cruce_tablas=$id_cruce_tablas";
+			$result_contenido=mysql_query($sql_contenido);
+			$cuantos_asd=mysql_num_rows($result_contenido);
+			//echo $cuantos_asd;
+
+			if($cuantos_asd){
+			$contenido=0;
+			$sum_conte=0;
+			$sub_to=0;
+
+   		   	while ($row_contenido=mysql_fetch_array($result_contenido))
+      		{
+			//echo "$row_contenido[contenido_unidades]<br>";
+			$contenido=$row_contenido[contenido_unidades];
+			$sum_conte+=$contenido;
+			}
+
+			$contenidototal	+=$sum_conte;
+
+		    $sum_conte_formateado=number_format($sum_conte,0,",",".");
+			echo $sum_conte_formateado;
+		
+
+// tipo moneda
+// 1 USD
+// 2 EUR
+// 3 CLP
+
+
+		if ($id_tipo_moneda == 1) {
+
+
+			$subtot_costo =$sum_conte * $costo;
+			$tot_costo_format1=number_format($subtot_costo,2,",",".");
+
+			$res_venta =$dolar * $venta;
+			$subtot_venta =$sum_conte * $res_venta;		
+			$tot_venta_format1=number_format($subtot_venta,2,",",".");
+
+			$margen= $subtot_venta - $subtot_costo;
+			$margen_tot1=number_format($margen,2,",",".");	
+
+			}
+
+		if ($id_tipo_moneda == 2 ) {
+
+			$subtot_costo =$sum_conte * $costo;
+			$tot_costo_format2=number_format($subtot_costo,2,",",".");
+
+			$res_venta =$euro * $venta;
+			$subtot_venta =$sum_conte * $res_venta;		
+			$tot_venta_format2=number_format($subtot_venta,2,",",".");
+
+			$margen= $subtot_venta - $subtot_costo;
+			$margen_tot2=number_format($margen,2,",",".");
+
+			}
+
+		if ($id_tipo_moneda == 3 ) {
+
+			$subtot_costo =$sum_conte * $costo;
+			$tot_costo_format3=number_format($subtot_costo,2,",",".");
+
+			$subtot_venta =$sum_conte * $venta;
+			$tot_venta_format3=number_format($subtot_venta,2,",",".");
+
+			$margen =$subtot_venta - $subtot_costo;
+			$margen_tot3=number_format($margen,2,",",".");			
+
+			} 
+
+//totales
+
+			$sRes_Cost +=$subtot_costo;
+			$sRes_Cost_format=number_format($sRes_Cost,2,",",".");
+
+			$sRes_Vent +=$subtot_venta;
+			$sRes_Vent_format=number_format($sRes_Vent,2,",",".");	
+
+			$sMargen +=$margen;
+			$sMargen_tot=number_format($sMargen,2,",",".");	
+		
+			}?>
+
+
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $costo; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $venta; ?></div></td>	
+
+<? if ($id_tipo_moneda == 1 and $cuantos_to != 0) {?>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_costo_format1; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_venta_format1; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $margen_tot1; ?></div></td>
+<?}?>
+
+<? if ($id_tipo_moneda == 2 and $cuantos_to != 0) {?>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_costo_format2; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_venta_format2; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $margen_tot2; ?></div></td>
+<?}?>
+
+<? if ($id_tipo_moneda == 3 and $cuantos_to != 0) {?>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_costo_format3; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $tot_venta_format3; ?></div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;<? echo $margen_tot3; ?></div></td>
+<?}?>
+
+<? if ($cuantos_to == 0) {?>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;</div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;</div></td>
+			<td nowrap="nowrap" class="titulo14"><div align="right">&nbsp;</div></td>
+<?}?>
+			</span></div></td>
+			</tr>
+			<?}?>
+              <tr>
+                <td height="23" colspan="4" nowrap="nowrap"><div align="left">&nbsp;&nbsp;&nbsp;<a href="?modulo=etiquetados_folios_listar.php&amp;id_ped=<? echo $id_pedidos?>&amp;id_destinosv=<? echo $id_destinos;?>&fecha_prioridad=<? echo $fecha_prioridad?>" class="cajas" >LISTAR DETALLE DE FOLIOS</a></div></td>
+                <td height="23" colspan="2" nowrap="nowrap" bgcolor="#CCCCCC"><span class="titulo14"><strong>&nbsp;Totales</strong></span></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="center" class="titulo14"><? echo "$cantidad";?></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="center" class="titulo14"><? echo "$sum_to";?></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right"><span class="titulo14">
+                    <?  $scontenidototal_formateado=number_format($contenidototal,0,",",".");
+                    	echo $scontenidototal_formateado;
+                    ?>
+                  </span></div></td>
+				<td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right" class="titulo14"></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right" class="titulo14"></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right" class="titulo14"><? echo "$sRes_Cost_format"?></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right" class="titulo14"><? echo "$sRes_Vent_format"?></div></td>
+                <td height="23" nowrap="nowrap" bgcolor="#CCCCCC" class="cajas"><div align="right" class="titulo14"><? echo "$sMargen_tot"?></div></td>
+
+              </tr>
+              <tr>
+                <td height="23" colspan="4" nowrap="nowrap">&nbsp;&nbsp;&nbsp;
+
+       				<? if(!$sumfila) { ?>
+                    <a href="?modulo=pedido_modificar.php&amp;id_ped=<? echo $id_pedidos?>&amp;sumfila=1" class="cajas">INGRESAR NUEVO PRODUCTO </a>
+                    <? }else{ ?>
+                    <a href="?modulo=pedido_modificar.php&amp;id_ped=<? echo $id_pedidos?>&amp;sumfila=0" class="cajas">OCULTAR</a>
+                  <? } ?></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                <td height="23" colspan="5" nowrap="nowrap"><div align="center">
+                    <input name="generar" type="submit" class="cajas" id="enpic2" value="Asignar Folios Automaticamente" /></div>
+				</td>
+              </tr>
+
+            </table>
+
+          <? }} ?></td>
+      </tr>
+      <tr>
+        <td>
+		<div align="left"></div>
+		</td>
+        </tr>
+      <tr>
+        <td nowrap="nowrap"><?
+	  if($sumfila) {?>
+            <table width="619" border="1" align="center">
+              <tr>
+                <td nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">ID</td>
+                <td width="220" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Producto</td>
+                <td width="54" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Calibre</td>
+                <td width="96" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Unidad Medida </td>
+                <td width="61" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Medida</td>
+                <td nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Cant. Bidones </td>
+                <td nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Costo</td>
+                <td nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Venta</td>
+<!--                <td nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">Notas</td>  -->               
+              </tr>
+              <tr>
+                <td width="24" nowrap="nowrap" class="cajas"><?
+	    if (isset($codigo) or $variable_falsa) {
+	    if($codigo){
+		$codigo_bd=$codigo;
+		$sqlb="SELECT  * from cruce_tablas AS ct, producto AS p, calibre AS c, unidad_medida AS um, medidas_productos AS mp where ct.id_cruce_tablas = $codigo_bd and ct.id_producto = p.id_producto and ct.id_calibre = c.id_calibre and ct.id_unidad_medida = um.id_unidad_medida and ct.id_medidas_productos = mp.id_medidas_productos";
+
+		$resulbt=mysql_query($sqlb);
+		$cuantosb=mysql_num_rows($resulbt);
+		while ($rowb=mysql_fetch_array($resulbt))
+		{
+		$id_cruce_tablas=$rowb[id_cruce_tablas];
+		$id_especieb=$rowb[id_especie];
+		$id_productob=$rowb[id_producto];
+		$productob=$rowb[producto];
+		$calibreb=$rowb[calibre];
+		$unidad_medidab=$rowb[unidad_medida];
+		$medidas_productosb=$rowb[medidas_productos];
+		$costounidad=$rowb[costounidad];
+		}
+	}
+}?>
+        <input name="codigo" type="text" id="codigo" onblur="Verifica_datos();" value="<? echo $codigo;?>" size="4" maxlength="5" onkeypress="solo_numeros()"/></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $productob?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $calibreb?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $unidad_medidab?></td>
+                <td nowrap="nowrap" class="cajas">&nbsp;<? echo $medidas_productosb?></td>
+                <td nowrap="nowrap" class="cajas"><input name="cantidadb" type="text" id="cantidadb" size="4" onkeypress="solo_numeros()"/>&nbsp;</td>
+                <td nowrap="nowrap" class="cajas"><input name="costo" type="text" id="costo" size="4" value="<? echo $costounidad;?>"/>
+                  &nbsp;</td>
+                <td nowrap="nowrap" class="cajas"><input name="venta" type="text" id="venta" size="4" onkeypress="solo_numeros()"/>
+                  &nbsp;</td>
+                           
+<!--				
+				<input name="subtot_costo" type="hidden"  value="<? echo $subtot_costo;?>"/>                
+                <input name="res_venta" type="hidden"  value="<? echo $subtot_venta;?>"/>                
+				<input name="margen" type="hidden" value="<? echo $margen;?>"/>        
+				<input name="dolar" type="hidden" value="<? echo $dolar;?>"/>                
+                <input name="euro" type="hidden"  value="<? echo $euro;?>"/>              
+-->
+              </tr>
+              <tr>
+                <td colspan="5" nowrap="nowrap"><div align="right" class="alarma">&nbsp;
+                        <? if($mensajesino) {echo "El producto ya se encuentra ingresado en el pedido "; }
+					 if($cantidadb == '' and $grabarfilas) {echo "Ingrese Cantidad";}
+					 if(!$cuantosb and $codigo) { echo "El Codigo ingresado No Existe";}
+						  ?>
+                </div></td><td nowrap="nowrap"></td><td nowrap="nowrap"></td><td nowrap="nowrap">
+                    <? if($codigo){?>
+                    <input name="grabarfilas" type="submit" class="cajas" id="grabarfilas" value="Agregar" />
+                    <? }?></td>
+              </tr>
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<?}?>
+
+<!--
+<?
+echo $subtot_costo."<br>";
+echo $res_venta."<br>";
+echo $margen;
+?>
+-->
+
+<table width="663" border="0">
+
+             <tr>
+               <td width="143" height="26">
+                 <div align="center">
+
+                   <? if(!$nuevo){
+				  // echo "id_usuario $id_usuario      --    id $id_insuban";
+				   ?>
+				   <? //if($id_usuario == $id_insuban){?>
+                  <input name="modificarp" type="submit" class="cajas" id="modificarp" value="Modificar Datos" />
+                   <? //}
+				   }?>
+               </div></td>
+               <td width="63">&nbsp;</td>
+               <td width="443">
+
+		      <? if($sum_to == $cantidad and $cuantossi == $sum_to and $sum_to != 0){?>
+		         <div align="center"><span class="titulo">[El PEDIDO YA PUEDE SER ENVIADO A PICKING]</span>
+			       <input name="enpic" type="submit" class="cajas" id="enpic" value="Enviar a Picking" />
+		         </div>
+     		  
+     		  			<?}else{?>
+
+				 		<div align="left"><span class="titulo">NOTA:<br>
+			     </span><span class="cajas"><span class="titulo">[</span>Para  enviar el pedido a picking, debe haber igualdad en la totalidad de bidones solicitados con bidones listos, adem&aacute;s el estado del folio debe estar en bodega</span><span class="titulo">]</span> </div>
+			     
+			     <?}?>
+				 </td>
+			</tr>
+</table>
+
+<!--
+				<table>
+					<tr><td><span class="titulo"><div align="center">Observaciones: </span><br><textarea rows="4" cols="100" name="observ" id="observ"></textarea></div></td></tr>
+				</table>
+-->
+</form>
+<br>
+<br>
+<?
+	if (!$agregar) {
+				$sql="insert into observaciones (id_pedido,observacion) values ('$id_pedidos','$act_nota')";
+				$rest=mysql_query($sql);						
+					}else{
+				$sql="UPDATE observaciones SET observacion='$act_nota' where id_pedido= $id_pedidos";
+				$rest=mysql_query($sql);
+					}
+
+?>
+<? if ($sumfila !=1) {?>
+<div align="center"><b>Observaciones:</b></div>
+<? 
+$sql_ped=mysql_query("SELECT * from observaciones where id_pedido = $id_pedidos ");
+$row = mysql_fetch_array($sql_ped);
+$nota =$row[1];
+echo "<div align='center'><textarea rows='10' cols='80' name='act_nota'>$nota</textarea></div>";
+?>
+<?if($permiso55 == 1 or $permiso55 == 2 and $nivel_usua == 1){?>
+<div align="center"><input type="submit" name="agregar" class="cajas" value="Agregar"></div>
+<?}?>
+<?}?>	
+
+<? if($_POST['enpic']) {
+
+					$date = date('d-m-Y H:i:s');
+					$mail = "ventas@insuban.cl";
+					$mail2 = "csilva@insuban.cl";					
+					$estado = "ENVIADO A PICKING";
+
+					$to = "$mail"; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+					$email_subject = "PEDIDO $id_pedidos ENVIADO A PICKING";
+					$email_body = " EL PEDIDO: $id_pedidos \n FECHA:      $date \n ESTADO:   $estado \n\n\n **** PRODIN SERVICE ****\n";
+					$headers = "From: noresponder@insuban.cl\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+
+					mail($to,$email_subject,$email_body,$headers);
+
+
+}?>

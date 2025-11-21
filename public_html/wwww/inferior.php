@@ -1,0 +1,11 @@
+<table width="1002" height="76" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="1001" background="jpg/inferior_rectangulo_gris.png">
+    <table width="862" height="34" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="34" background="jpg/gris_rec_direccion.jpg"><div align="center"><span class="texto_11">www.insuban.cl - <a href="mailto:insuban@insuban.cl">insuban@insuban.cl</a> - Tel&eacute;fonos: (56.2) 2.945.85.00 Fax: (56.2) 2.945.85.29 - <a href="http://www.mapcity.cl/Ploteo.asp?ciudad=santiago&amp;IdArco=&amp;TipoVia1=CALLE&amp;NombreVia1=ANTILLANCA NORTE&amp;Altura1=391&amp;Comuna1=PUDAHUEL&amp;Str_Direccion=CALLE ANTILLANCA NORTE 391&amp;Punto_X=-70.7672561597643&amp;Punto_Y=-33.3769132373987&amp;Este_Min=335424&amp;Este_Max=335924&amp;Norte_Min=6305302&amp;Norte_Max=6305802&amp;moverse=ZOOM5000&amp;Encabezado=SI&amp;Producto=DIRECCION&amp;IdServicio=&amp;NombreServicio=&amp;GenRuta=&amp;STransito=&amp;TxtPer1=&amp;TxtPer2=&amp;screenwidth=1366&amp;screenheight=768&amp;opcbuscar=dire&amp;icorigen=../images/botones/ico_estrella_ch.gif&amp;icdestino=&amp;icmapa=../images/botones/int-bt_color.gif&amp;colormapa=color1&amp;icono1=estrella&amp;icono2=&amp;id=1&amp;Inicio=SI&amp;xp=-70.7672561597643&amp;yp=-33.3769132373987&amp;Escala=5000&amp;lpXUtm=335674&amp;lpYUtm=6305552&amp;CodigoPostal=9030925&amp;dir_original=@ANTILLANCA NORTE@@391@PUDAHUEL&amp;idFoto=&amp;alias=&amp;pagina=&amp;limite=" target="_blank">Antillanca Norte N&deg; 391, Pudahuel, Santiago - Chile</a></span></div></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>

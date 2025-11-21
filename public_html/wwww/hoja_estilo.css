@@ -1,0 +1,55 @@
+.texto_negrita_12 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #CCCCCC; font-weight: bold; }
+
+.texto_11 {	font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #FFFFFF;}
+
+.letra { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000;}
+
+.titulo { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 21px; color: #bcbdbd;}
+
+.arial_11_rojo {
+	color: #FF0000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.arial_11_gris {
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.texto_normal {
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.texto_normal_gris_p {
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9 px;
+}
+
+.arial_11_gris_bold {
+	color: #E10B0B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+}
+.arial_14_rojo {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF0000;
+}
+.arial_12_rojo_bold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #CB0000;
+}
+
+input { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #8A856A; background-color: #E4E4E4; border: #514E4F; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+textarea { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #424040; background-color: #E4E4E4; border: #514E4F; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:active {text-decoration: none}

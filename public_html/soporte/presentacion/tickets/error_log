@@ -1,0 +1,107 @@
+[13-Sep-2023 12:47:01] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[13-Sep-2023 12:47:01] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[13-Sep-2023 12:47:01] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[13-Sep-2023 12:47:01] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[13-Sep-2023 12:47:12] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[13-Sep-2023 12:47:12] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[25-Sep-2023 13:15:39] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[25-Sep-2023 13:15:39] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[25-Sep-2023 13:15:39] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[25-Sep-2023 13:15:39] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[25-Sep-2023 13:15:56] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[25-Sep-2023 13:15:56] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[29-Sep-2023 09:11:39] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[29-Sep-2023 09:11:39] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[29-Sep-2023 09:11:39] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[29-Sep-2023 09:11:39] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[29-Sep-2023 09:11:50] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[29-Sep-2023 09:11:50] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[29-Sep-2023 09:35:45] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[11-Oct-2023 08:03:11] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 08:03:11] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[11-Oct-2023 08:03:11] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[11-Oct-2023 08:03:11] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[11-Oct-2023 08:03:30] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 08:03:30] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[11-Oct-2023 08:49:29] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 08:49:29] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[11-Oct-2023 08:49:29] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[11-Oct-2023 08:49:29] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[11-Oct-2023 08:49:50] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 08:49:50] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[11-Oct-2023 09:45:33] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 09:45:33] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[11-Oct-2023 09:45:33] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[11-Oct-2023 09:45:33] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[11-Oct-2023 09:45:48] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[11-Oct-2023 09:45:48] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[25-Oct-2023 09:17:58] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[25-Oct-2023 09:17:58] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[25-Oct-2023 09:17:58] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[25-Oct-2023 09:17:58] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[25-Oct-2023 09:18:16] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[25-Oct-2023 09:18:16] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[14-Nov-2023 08:52:02] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[14-Nov-2023 12:13:10] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[14-Nov-2023 12:13:10] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[14-Nov-2023 12:13:10] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[14-Nov-2023 12:13:10] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[14-Nov-2023 12:13:28] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[14-Nov-2023 12:13:28] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[14-Nov-2023 12:13:28] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[14-Nov-2023 12:13:28] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[14-Nov-2023 12:13:48] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[14-Nov-2023 12:13:48] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[14-Nov-2023 12:13:55] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[14-Nov-2023 12:13:55] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[14-Nov-2023 12:13:55] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[14-Nov-2023 12:13:55] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[14-Nov-2023 12:14:23] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[14-Nov-2023 12:14:23] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[21-Nov-2023 08:51:24] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[30-Nov-2023 10:36:54] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[05-Dec-2023 13:13:14] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[05-Dec-2023 13:13:14] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[05-Dec-2023 13:13:14] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[05-Dec-2023 13:13:14] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[05-Dec-2023 13:13:19] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[05-Dec-2023 13:13:19] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[06-Dec-2023 09:23:32] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[13-Dec-2023 12:04:36] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[18-Dec-2023 13:33:34] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[18-Dec-2023 13:33:34] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[18-Dec-2023 13:33:34] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[18-Dec-2023 13:33:34] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[18-Dec-2023 13:33:40] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[18-Dec-2023 13:33:40] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[18-Dec-2023 13:33:44] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[18-Dec-2023 13:33:44] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[18-Dec-2023 13:33:44] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[18-Dec-2023 13:33:44] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[18-Dec-2023 13:33:49] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[18-Dec-2023 13:33:49] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[19-Dec-2023 12:52:58] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[09-Jan-2024 09:55:56] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[16-Jan-2024 09:19:56] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[22-Jan-2024 11:23:21] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[22-Jan-2024 11:23:21] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[22-Jan-2024 11:23:21] PHP Notice:  Undefined index:  enviar in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 27
+[22-Jan-2024 11:23:21] PHP Notice:  Undefined variable: InfoEnvio in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 50
+[22-Jan-2024 11:23:59] PHP Notice:  Use of undefined constant email - assumed 'email' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 5
+[22-Jan-2024 11:23:59] PHP Notice:  Use of undefined constant mensaje - assumed 'mensaje' in /home/prodinwe/public_html/soporte/presentacion/tickets/openReport.php on line 6
+[31-Jan-2024 12:29:47] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 12:29:49] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 14:15:53] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 14:15:54] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 14:15:55] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 14:23:22] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 15:34:07] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[31-Jan-2024 15:45:23] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 09:09:01] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 09:10:19] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 10:57:00] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 10:57:01] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 11:02:30] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 13:24:39] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 15:19:31] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60
+[01-Feb-2024 15:32:35] PHP Notice:  Undefined index:  Usuarionombre in /home/prodinwe/public_html/soporte/presentacion/tickets/ver_tickets2.php on line 60

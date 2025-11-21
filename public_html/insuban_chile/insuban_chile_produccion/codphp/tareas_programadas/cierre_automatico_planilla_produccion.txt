@@ -1,0 +1,6 @@
+wget -nv -O /dev/null http://201.238.235.236/~prodinwe/tareas_programadas/cierre_automatico_planilla_produccion.php
+minuto = 0
+hora = 10
+dia = *
+mes = *
+dia de semana = 1-5

@@ -1,0 +1,381 @@
+<?
+
+$sql1="SELECT * from pallet AS p, etiquetados_folios AS ef where p.pallet = $pallet and p.id_etiquetados_folios = ef.id_etiquetados_folios order by p.pallet   desc";
+$rest1=mysql_query($sql1);
+$cuantos1=mysql_num_rows($rest1);
+
+
+//$idd=$id_destinos;
+//echo "idds $idd";
+if($grabar_x){
+if ($id_etiquetados_folios2) 
+    foreach ($id_etiquetados_folios2 as $key)
+   {
+    $fecha_ingreso_pallet  = date("Y-m-d");
+	$sql="insert into pallet (pallet,id_etiquetados_folios,fecha_ingreso_pallet) values ($pallet,$key,'$fecha_ingreso_pallet')";
+	$res=mysql_query($sql);
+	//echo "SQL $sql";
+    $sq_up="update etiquetados_folios set pallet = '$pallet' where  id_etiquetados_folios=$key";
+	$rest_up=mysql_query($sq_up);
+	
+	//echo "sql $sq_up";
+	}
+
+}
+
+if ($modificar_x) {
+if($id_etiquetados_folios) {
+ foreach ($id_etiquetados_folios as $key)
+ {
+
+ $sql="delete from pallet where  id_etiquetados_folios = $key";
+ $res=mysql_query($sql);
+
+ //$fecha_eliminacion_pallet  = date("Y-m-d");
+  $sq2="update etiquetados_folios  set  pallet = '0' where id_etiquetados_folios =$key";
+  $res2=mysql_query($sq2);
+ 	
+   
+}
+
+}
+echo"<meta http-equiv=\"refresh\" content=\"0;URL=?modulo=modificar_pallet.php&amp;pallet=$pallet\">";
+ 	exit;
+}
+?>
+<style type="text/css">
+<!--
+.cajas {font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.titulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+}
+.cajas1 {	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align: left;
+}
+-->
+</style>
+<script language="JavaScript"> 
+function seleccionar_todo(){ 
+   for (i=0;i<document.form1.elements.length;i++) 
+      if(document.form1.elements[i].type == "checkbox") 
+         document.form1.elements[i].checked=1 
+} 
+
+function deseleccionar_todo(){ 
+   for (i=0;i<document.form1.elements.length;i++) 
+      if(document.form1.elements[i].type == "checkbox") 
+         document.form1.elements[i].checked=0 
+} 
+</script>
+<script language="JavaScript"> 
+function cambiar(esto)
+{
+	vista=document.getElementById(esto).style.display;
+	if (vista=='none')
+		vista='block';
+	else
+		vista='none';
+
+	document.getElementById(esto).style.display = vista;
+}
+</script>
+<script language="JavaScript">
+<!--
+var nav4 = window.Event ? true : false;
+function numeros(evt){ 
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57 
+var key = nav4 ? evt.which : evt.keyCode; 
+return (key <= 32 || (key >= 48 && key <= 59) || (key >= 45 && key <= 47 ));
+}
+//-->
+</script>
+<script language="javascript" type="text/javascript">
+function Verifica_datos(){
+//var variableServidor = <?echo $variableServidor;?>
+ 
+var ini = <? echo $ini;?>
+ini=document.getElementById("ini");
+frm=document.getElementById("form1");
+
+
+frm.action="?modulo=modificar_pallet.php&pallet=<?echo $pallet?>&ini=" + ini.value
+frm.submit();
+return true;
+}
+</script>
+<script language="JavaScript"> 
+function Abrir_ventana (pagina) { 
+var opciones="toolbar=yes,location=yes, directories=yes, status=yes, menubar=yes, scrollbars=yes, resizable=yes, width=480, height=401, top=100, left=100"; 
+window.open(pagina,"",opciones); 
+} 
+</script>
+<table width="962" border="0" align="center">
+  <tr>
+    <td width="588">&nbsp;</td>
+    <td width="364"><span class="cajas"><a href="?modulo=listar_pallet.php">Volver Pallet</a></span></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="titulo">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#CCCCCC" class="titulo">Imprimir Folios Pallet
+      </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="titulo">
+    <? if($ini == '')
+	        $ini=1;
+		 if($fin == '')
+	        $fin=$cuantos1;
+	  ?>
+      
+    <a href="javascript:Abrir_ventana('informes_pdf/imprimir_folios_pallet.php?pallet=<?echo $pallet?>&amp;ini=<? echo $ini?>&fin=<? echo $fin?>')">Imprimir Folios</a>
+     </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:Abrir_ventana('informes_pdf/imprimir_folio_agrupador_pallet.php?pallet=<?echo $pallet?>&amp;ini=<? echo $ini?>&fin=<? echo $fin?>')"> Imprimir Folio Pallet</a>
+    
+   </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="titulo">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><form id="form1" name="form1" method="post" action="">
+      <table width="953" border="0" align="center">
+  <tr>
+    <td width="947">
+	<? if ($row=mysql_fetch_array($rest1)){ 
+   // $f_elaboracion=format_fecha_sin_hora($row[f_elaboracion]);
+	
+	?>
+	
+      <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="3" bgcolor="#CCCCCC"><span class="cajas"><span class="titulo">&nbsp;N&deg; Pallet </span></span></td>
+          <td colspan="9" bgcolor="#CCCCCC">&nbsp;<span class="titulo"><span class="cajas"><span class="titulo"><span class="cajas1"><? echo $pallet?></span></span></span></span></td>
+          </tr>
+        <tr>
+          <td colspan="2" bgcolor="#CCCCCC"><a href="javascript:seleccionar_todo()"><img src="jpg/todos.jpg" width="13" height="13" border="0"/></a> <a href="javascript:deseleccionar_todo()"><img src="jpg/ninguno.jpg" width="13" height="13" border="0"/></a></td>
+          <td width="6%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Folio </td>
+          <td width="3%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;ID</td>
+          <td width="10%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">&nbsp;N&ordm; Pedido</td>
+          <td width="11%" bgcolor="#CCCCCC" class="titulo">&nbsp;F/Elaboraci&oacute;n </td>
+          <td width="15%" bgcolor="#CCCCCC" class="titulo">&nbsp;Producto</td>
+          <td width="11%" bgcolor="#CCCCCC" class="titulo">&nbsp;Calibre</td>
+          <td width="11%" bgcolor="#CCCCCC" class="titulo">&nbsp;Unid/Med</td>
+          <td width="9%" bgcolor="#CCCCCC" class="titulo">&nbsp;Medida</td>
+          <td width="8%" bgcolor="#CCCCCC" class="titulo">&nbsp;Cantidad</td>
+          <td width="10%" bgcolor="#CCCCCC" class="titulo">&nbsp;Estado</td>
+        </tr>
+        <? 
+		$sql="SELECT *
+		
+		FROM pallet AS p, etiquetados_folios As ef, calibre AS c, producto AS pro, medidas_productos AS mp, unidad_medida AS un, estado_folio AS est where 
+		p.pallet=$pallet 
+		and ef.id_calibre=c.id_calibre
+		and ef.id_estado_folio=est.id_estado_folio
+		and ef.id_producto = pro.id_producto
+		and	ef.id_medidas_productos = mp.id_medidas_productos
+		and	ef.id_unidad_medida = un.id_unidad_medida
+		and	p.id_etiquetados_folios= ef.id_etiquetados_folios
+		group by ef.id_etiquetados_folios
+		";
+		$rest=mysql_query($sql);
+		$cuantos=mysql_num_rows($rest);
+
+     	 if($cuantos){
+		    while ($r=mysql_fetch_array($rest)){ 
+	   		$f_elaboracion=format_fecha_sin_hora($r[f_elaboracion]);
+			$id_cruce_tablas=$r[id_cruce_tablas];
+			$id_pedidos=$r[id_pedidos];
+	        $i++;
+			//$observaciones_picking=$r[observaciones_picking];
+		?>
+        <tr>
+          <td width="3%" height="20" class="cajas">&nbsp;<? echo $i?></td>
+          <td width="3%" align="center">
+         
+       
+          <? if(!$id_pedidos){?>
+         <span class="cajas"><input name="id_etiquetados_folios[]" type="checkbox" class="cajas" id="id_etiquetados_folios[]" value="<?echo $r[id_etiquetados_folios];?>" /><input name="id_etiquetados_folios_ultimo" type="hidden" id="id_etiquetados_folios" value="<?echo $r[id_etiquetados_folios]?>" /></span>
+         <? }else{?>
+         <span class="titulo">X </span>
+         <? }?>
+          </td>
+          <td class="cajas">&nbsp;<a href="?modulo=ejemplo_etiquetas_folios.php&id_etf2=<?echo $r[id_etiquetados_folios]?>"><?echo $r[id_etiquetados_folios]?> </a><input name="id_pedidos" type="hidden" value="<?echo $row[id_pedidos]?>" /></td>
+          <td align="center" class="cajas"><?echo $id_cruce_tablas?></td>
+          <td align="center" class="cajas">&nbsp;<?echo $id_pedidos?></td>
+          <td class="cajas">&nbsp;<?echo $f_elaboracion?></td>
+          <td class="cajas">&nbsp;<?
+		if ($r[nombre_alt] != '') {
+		  $i++;
+		  $producto=$r[nombre_alt];
+		  }
+		else
+		  $producto=$r[producto];
+		echo $producto;
+		?></td>
+          <td class="cajas">&nbsp;<?
+		if ($r[calibre_alt] != '') 
+		  $calibre=$r[calibre_alt];
+		else
+		  $calibre=$r[calibre];
+		echo $calibre;
+		?></td>
+          <td class="cajas">&nbsp;<?echo $r[unidad_medida]?></td>
+          <td class="cajas">&nbsp;<?echo $r[medidas_productos]?></td>
+          <td class="cajas">&nbsp;<?echo $r[contenido_unidades]?></td>
+          <td class="cajas">&nbsp; <?
+		echo $r[estado_folio];
+		
+		?></td>
+          </tr>
+        <?
+	 }//while ($r=mysql_fetch_array($rest)){ 
+	}// if($cuantos){
+	
+?>
+      </table>
+      <? }?></td>
+  </tr>
+  <tr>
+    <td>
+	  <div align="center">
+	  <? if($permiso56 == 1){?>
+	  <? //if($observaciones_picking == '' and $cuantos1 != 1){?>
+	  <a href="javascript: document.form1.submit();">
+      <input type="image" name="modificar" src="jpg/eliminar_folio.jpg" />
+      </a>
+	  <? //}
+	    if($observaciones_picking != '' and $cuantos1 == 1){?>
+	  <a href="javascript: document.form1.submit();">
+      <input type="image" name="modificar" src="jpg/eliminar_folio.jpg" />
+      </a>
+	  <? 
+	  }
+	  }?>
+	  </div></td>
+  </tr>
+  <tr>
+    <td>
+	<? 
+	//if($i<40){
+	if($permiso56 == 1){?>
+    <a href="#" onclick="cambiar('error'); return false;"  class="titulo">Agregar Folios al Pallet</a>
+	<? // }
+		 }
+	?>
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<div id="error" style="display: none;">
+	<textarea name="folios" cols="30" rows="3" id="folios" onKeyPress="return numeros(event)"></textarea>
+    <input name="buscar" type="submit" class="cajas" id="buscar" value="Buscar" /></div></td>
+  </tr>
+ <tr>
+    <td>
+    <table width="700" border="1" align="center" cellpadding="0" cellspacing="0">
+  	 <? if($folios){
+	
+	$dat=split("\n",$folios);
+	 $c=count($dat);
+	
+	
+		 
+		?>
+	
+    <tr>
+      <td width="6%" align="center" bgcolor="#CCCCCC"><a href="javascript:seleccionar_todo()"><img src="jpg/todos.jpg" width="13" height="13" border="0"/></a> <a href="javascript:deseleccionar_todo()"><img src="jpg/ninguno.jpg" width="13" height="13" border="0"/></a> </td>
+      <td width="10%" nowrap="nowrap" bgcolor="#CCCCCC" class="titulo">N&ordm; Folio</td>
+      <td width="18%" bgcolor="#CCCCCC" class="titulo">Fecha Elaboraci&oacute;n</td>
+      <td width="34%" bgcolor="#CCCCCC" class="titulo">Producto</td>
+      <td width="11%" bgcolor="#CCCCCC" class="titulo">Calibre</td>
+      <td width="10%" bgcolor="#CCCCCC" class="titulo"> Medida </td>
+      <td width="11%" bgcolor="#CCCCCC" class="titulo">Cantidad</td>
+	
+    <?
+	
+	 for ($i=0; $i<=$c;$i++)
+	  { 
+	   if ($dat[$i] != "")
+	   {
+	    $id_f=$dat[$i];
+		$largo=strlen($id_f);
+		if($largo != 1){
+		  $id_f=substr($id_f, 0, $largo);
+		}
+	
+    $sql="SELECT *
+		 FROM etiquetados_folios AS ef, producto AS p, calibre AS c, medidas_productos AS mp 
+		 where ef.id_etiquetados_folios = ef.id_etiquetados_folios 
+		 and ef.id_producto = p.id_producto 
+		 and ef.id_calibre=c.id_calibre 
+		 and ef.id_medidas_productos = mp.id_medidas_productos 
+		 and ef.borrado != 1
+		 and id_etiquetados_folios = $id_f
+		 ";
+         $rest=mysql_query($sql);
+		 $cuantos_folios=mysql_num_rows($rest);
+		 
+		 
+	?>
+
+    </tr>
+     <? if($cuantos_folios){ ?> 
+       <tr>
+	   <? 
+		while ($r=mysql_fetch_array($rest)){ 
+	  	$f_elaboracion=format_fecha_sin_hora($r[f_elaboracion]);
+		$pallet=$r[pallet];
+	   ?>
+      <td align="center" nowrap="nowrap" class="cajas">
+	  <? if(!$pallet) {?>
+	  <label>
+      
+      
+	  <input name="id_etiquetados_folios2[]" type="checkbox" id="id_etiquetados_folios2[]" value="<?echo $r[id_etiquetados_folios];?>" />
+	  
+	  <? }else{?>
+	  <? echo "<b> Pallet: </b> $r[pallet]";?>
+	  <? }?>
+	  </label>
+	  </td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[id_etiquetados_folios]?></td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $f_elaboracion?></td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[producto]?></td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[calibre]?></td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[medidas_productos]?></td>
+      <td nowrap="nowrap" class="cajas">&nbsp;<?echo $r[contenido_unidades]?>
+	  </tr>
+  <? 	
+	  } //while ($r=mysql_fetch_array($rest)){ 
+        }
+	 } // for ($i=0; $i<=$c;$i++)
+	} //if($folios){
+	?>
+  </table>
+  
+  <a href="javascript: document.form1.submit();"><label>
+  <? if($permiso56 == 1){?>
+  <? if($cuantos_folios){?>
+  <div align="center">
+  <? if(!$pallet) {?>
+  <input type="image" name="grabar" src="jpg/agregar_folio.jpg" />
+  <? }?>
+  </div>
+  <? }?>
+  <? }?>
+  </label>
+  </a>	
+  <? }?>  </td>
+  </tr>
+</table>
+    </form></td>
+  </tr>
+</table>

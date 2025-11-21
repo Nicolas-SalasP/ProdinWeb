@@ -1,0 +1,54 @@
+[25-Jan-2018 16:54:03] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[30-Jan-2018 15:41:53] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[31-Jan-2018 08:30:15] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[01-Feb-2018 10:27:55] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[01-Feb-2018 16:45:41] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:57:03] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:57:10] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:57:23] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:57:37] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:57:58] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:58:11] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[01-Feb-2018 16:58:19] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[02-Feb-2018 08:59:11] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[09-Feb-2018 13:01:22] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 07:54:21] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 07:54:23] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 13:22:04] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 13:22:06] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 13:22:06] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 13:22:06] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 13:44:47] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 16:58:39] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 16:58:41] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 16:58:42] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 16:58:45] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[12-Feb-2018 16:58:47] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[13-Feb-2018 09:02:33] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[13-Feb-2018 09:02:34] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[15-Feb-2018 09:51:35] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[15-Feb-2018 09:51:36] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[19-Feb-2018 08:58:33] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[19-Feb-2018 08:59:00] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[19-Feb-2018 08:59:13] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[20-Feb-2018 06:40:08] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[26-Feb-2018 07:54:21] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[26-Feb-2018 09:32:29] PHP Notice:  Use of undefined constant submit - assumed 'submit' in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/insert_org.php on line 2
+[26-Feb-2018 09:32:29] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/insert_org.php on line 5
+[26-Feb-2018 12:59:50] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[26-Feb-2018 15:46:56] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[28-Feb-2018 12:14:47] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[01-Mar-2018 13:50:52] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[07-Mar-2018 05:59:18] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[13-Mar-2018 16:49:46] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[14-Mar-2018 16:17:14] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[27-Mar-2018 08:47:55] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[28-Mar-2018 13:13:28] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[04-Apr-2018 15:09:41] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/upd_op.php on line 6
+[05-Apr-2018 08:37:37] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[05-Apr-2018 08:37:40] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[09-Apr-2018 15:51:10] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[09-Apr-2018 15:51:11] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[10-Apr-2018 16:56:16] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/login.php on line 15
+[10-Apr-2018 16:58:00] PHP Notice:  Use of undefined constant submit - assumed 'submit' in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/insert_op.php on line 2
+[10-Apr-2018 16:58:00] PHP Notice:  Undefined variable: database in /home/prodinwe/public_html/insuban_chile/aplicacion/D-System/modelos/insert_op.php on line 5
